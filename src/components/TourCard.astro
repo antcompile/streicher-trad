@@ -36,9 +36,9 @@ const includes = getLocalizedArray(d.includes, lang);
 
 const badgeLabels: Record<string, Record<string, string>> = {
   'limited-season': {
-    en: 'Limited — By Season Only',
-    ar: 'محدود — موسمي فقط',
-    fr: 'Limité — Saisonnier Uniquement',
+    en: 'Limited, by season only',
+    ar: 'محدود، موسمي فقط',
+    fr: 'Limité, saisonnier uniquement',
   },
 };
 const badgeText = d.badge ? (badgeLabels[d.badge]?.[lang] || d.badge) : null;

@@ -8,9 +8,9 @@
   "price_usd": 26,
   "weight_kg": 1,
   "description": {
-    "en": "A dark, robust honey harvested from the ancient oak (sindian) forests of Northern Lebanon. This is not a blossom honey — it's a honeydew honey, produced when bees collect sweet secretions from oak trees and transform them into something extraordinary. Deep, molasses-like sweetness with woody, earthy undertones and a lingering finish. Prized for its mineral richness and medicinal properties in Lebanese tradition.",
-    "ar": "عسل داكن وقوي يُحصد من غابات السنديان القديمة في شمال لبنان. هذا ليس عسل أزهار — إنه عسل ندوة، يُنتج عندما يجمع النحل إفرازات حلوة من أشجار السنديان ويحولها إلى شيء استثنائي. حلاوة عميقة تشبه الدبس مع نكهات خشبية وترابية. يُقدّر لغناه بالمعادن وخصائصه الطبية في التقاليد اللبنانية.",
-    "fr": "Un miel sombre et robuste récolté dans les anciennes forêts de chênes (sindian) du Nord-Liban. Ce n'est pas un miel de fleurs — c'est un miel de miellat, produit quand les abeilles collectent les sécrétions sucrées des chênes et les transforment en quelque chose d'extraordinaire. Douceur profonde rappelant la mélasse, avec des notes boisées et terreuses. Prisé pour sa richesse minérale et ses propriétés médicinales dans la tradition libanaise."
+    "en": "A dark, robust honey harvested from the ancient oak (sindian) forests of Northern Lebanon. This is not a blossom honey; it's a honeydew honey, produced when bees collect sweet secretions from oak trees and transform them into something extraordinary. Deep, molasses like sweetness with woody, earthy undertones and a lingering finish. Prized for its mineral richness and medicinal properties in Lebanese tradition.",
+    "ar": "عسل داكن وقوي يُحصد من غابات السنديان القديمة في شمال لبنان. هذا ليس عسل أزهار؛ إنه عسل ندوة، يُنتج عندما يجمع النحل إفرازات حلوة من أشجار السنديان ويحولها إلى شيء استثنائي. حلاوة عميقة تشبه الدبس مع نكهات خشبية وترابية. يُقدّر لغناه بالمعادن وخصائصه الطبية في التقاليد اللبنانية.",
+    "fr": "Un miel sombre et robuste récolté dans les anciennes forêts de chênes (sindian) du Nord-Liban. Ce n'est pas un miel de fleurs : c'est un miel de miellat, produit quand les abeilles collectent les sécrétions sucrées des chênes et les transforment en quelque chose d'extraordinaire. Douceur profonde rappelant la mélasse, avec des notes boisées et terreuses. Prisé pour sa richesse minérale et ses propriétés médicinales dans la tradition libanaise."
   },
   "tasting_notes": {
     "en": "Dark, robust, notes of molasses and dried fruit",
@@ -18,9 +18,9 @@
     "fr": "Sombre, robuste, notes de mélasse et fruits secs"
   },
   "flora_source": {
-    "en": "Oak honeydew (sindian) — old-growth forests",
-    "ar": "ندوة السنديان — غابات قديمة النمو",
-    "fr": "Miellat de chêne (sindian) — forêts anciennes"
+    "en": "Oak honeydew (sindian), old growth forests",
+    "ar": "ندوة السنديان، غابات قديمة النمو",
+    "fr": "Miellat de chêne (sindian), forêts anciennes"
   },
   "season": "autumn",
   "in_stock": true,

@@ -1,6 +1,6 @@
 # Dany's Bees
 
-Pure honey from the mountains of Northern Lebanon. Family-crafted in Ashkar since the 1980s.
+Pure honey from the mountains of Northern Lebanon. Family crafted in Barhalioun since the 1980s.
 
 **Live site:** [danysbees.com](https://danysbees.com)
 
@@ -37,7 +37,7 @@ public/             # Static assets (images, fonts, icons, PWA)
 
 1. Copy an existing file in `src/content/products/` (e.g., `thyme.json`)
 2. Save as `your-product.json` with a unique `id`
-3. Fill in all fields — `name`, `description`, `tasting_notes`, and `flora_source` need `en`, `ar`, and `fr` values
+3. Fill in all fields: `name`, `description`, `tasting_notes`, and `flora_source` need `en`, `ar`, and `fr` values
 4. Place a product photo at `public/images/products/your-product.jpg`
 5. The product page at `/en/products/your-product/` is auto-generated
 
@@ -90,11 +90,11 @@ The site auto-deploys to GitHub Pages when you push to `main`:
 
 ## Tech Stack
 
-- **Astro 5** — Static site generator
-- **Tailwind CSS 4** — Utility-first CSS
-- **TypeScript** — Type-safe data layer
-- **i18n** — English, Arabic (RTL), French
-- **No client-side framework** — Vanilla JS for interactivity
+- **Astro 5**: Static site generator
+- **Tailwind CSS 4**: Utility-first CSS
+- **TypeScript**: Type-safe data layer
+- **i18n**: English, Arabic (RTL), French
+- **No client-side framework**: Vanilla JS for interactivity
 
 ## Fonts (Self-hosted)
 

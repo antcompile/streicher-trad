@@ -16,19 +16,19 @@
     "fr": "25$ par personne"
   },
   "price_usd": 25,
-  "duration": "2-3 hours",
+  "duration": "2 to 3 hours",
   "max_group": 20,
   "availability": {
-    "en": "March — October",
-    "ar": "مارس — أكتوبر",
-    "fr": "Mars — Octobre"
+    "en": "March to October",
+    "ar": "مارس إلى أكتوبر",
+    "fr": "Mars à octobre"
   },
   "includes": {
     "en": [
       "Visit the apiary with a family beekeeper guide",
       "Suit up in full professional beekeeper gear",
       "Open live hives and observe the bees at work",
-      "Taste multiple fresh honey varieties on-site",
+      "Taste multiple fresh honey varieties on site",
       "Learn the art of traditional Lebanese beekeeping",
       "Photo opportunities in the apiary",
       "A jar of honey to take home"

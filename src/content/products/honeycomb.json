@@ -8,19 +8,19 @@
   "price_usd": 30,
   "weight_kg": 0.5,
   "description": {
-    "en": "Pure, unprocessed beeswax comb cut directly from our frames, dripping with fresh honey. This is honey in its most natural state — the way it exists inside the hive. Each piece contains raw honey sealed by the bees themselves. Break off a piece and chew it slowly to experience the full complexity of flavors. A true delicacy and a window into the hive.",
-    "ar": "شمع نحل طبيعي يُقطع مباشرة من إطاراتنا، مليء بالعسل الطازج. هذا هو العسل في أكثر حالاته طبيعية — كما يوجد داخل الخلية. كل قطعة تحتوي على عسل خام مختوم من النحل بأنفسهم. اكسر قطعة وامضغها ببطء لتجربة كامل تعقيد النكهات.",
-    "fr": "Rayon de cire d'abeille pur et non transformé, coupé directement de nos cadres et dégoulinant de miel frais. C'est le miel dans son état le plus naturel — tel qu'il existe à l'intérieur de la ruche. Chaque morceau contient du miel brut scellé par les abeilles elles-mêmes. Cassez un morceau et mâchez-le lentement pour découvrir toute la complexité des saveurs."
+    "en": "Pure, unprocessed beeswax comb cut directly from our frames, dripping with fresh honey. This is honey in its most natural state, the way it exists inside the hive. Each piece contains raw honey sealed by the bees themselves. Break off a piece and chew it slowly to experience the full complexity of flavors. A true delicacy and a window into the hive.",
+    "ar": "شمع نحل طبيعي يُقطع مباشرة من إطاراتنا، مليء بالعسل الطازج. هذا هو العسل في أكثر حالاته طبيعية، كما يوجد داخل الخلية. كل قطعة تحتوي على عسل خام مختوم من النحل بأنفسهم. اكسر قطعة وامضغها ببطء لتجربة كامل تعقيد النكهات.",
+    "fr": "Rayon de cire d'abeille pur et non transformé, coupé directement de nos cadres et dégoulinant de miel frais. C'est le miel dans son état le plus naturel, tel qu'il existe à l'intérieur de la ruche. Chaque morceau contient du miel brut scellé par les abeilles elles-mêmes. Cassez un morceau et mâchez-le lentement pour découvrir toute la complexité des saveurs."
   },
   "tasting_notes": {
-    "en": "Rich, waxy, intensely sweet — honey in its purest form",
-    "ar": "غني، شمعي، حلو بشكل مكثف — العسل في أنقى أشكاله",
-    "fr": "Riche, cireux, intensément sucré — le miel dans sa forme la plus pure"
+    "en": "Rich, waxy, intensely sweet, honey in its purest form",
+    "ar": "غني، شمعي، حلو بشكل مكثف، العسل في أنقى أشكاله",
+    "fr": "Riche, cireux, intensément sucré, le miel dans sa forme la plus pure"
   },
   "flora_source": {
-    "en": "Mixed flora — cut comb from our mountain hives",
-    "ar": "نباتات متنوعة — قطع شمع من خلايانا الجبلية",
-    "fr": "Flore mixte — rayon coupé de nos ruches de montagne"
+    "en": "Mixed flora, cut comb from our mountain hives",
+    "ar": "نباتات متنوعة، قطع شمع من خلايانا الجبلية",
+    "fr": "Flore mixte, rayon coupé de nos ruches de montagne"
   },
   "season": "summer",
   "in_stock": true,

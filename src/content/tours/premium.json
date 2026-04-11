@@ -19,14 +19,14 @@
   "duration": "Full day",
   "max_group": 10,
   "availability": {
-    "en": "Limited — during extraction season only (June–August)",
-    "ar": "محدود — خلال موسم الاستخراج فقط (يونيو–أغسطس)",
-    "fr": "Limité — pendant la saison d'extraction uniquement (juin–août)"
+    "en": "Limited, during extraction season only (June to August)",
+    "ar": "محدود، خلال موسم الاستخراج فقط (يونيو إلى أغسطس)",
+    "fr": "Limité, pendant la saison d'extraction uniquement (juin à août)"
   },
   "includes": {
     "en": [
       "Everything in the Honey & Hive Experience",
-      "Hands-on honey extraction with traditional centrifuge",
+      "Hands on honey extraction with traditional centrifuge",
       "Filter and jar your own honey under expert guidance",
       "Take home a large jar of honey you extracted yourself",
       "Traditional Lebanese village lunch included",
@@ -53,9 +53,9 @@
     ]
   },
   "description": {
-    "en": "A rare, full-day immersion available only a few times each year during honey extraction season. Go beyond observation — roll up your sleeves and participate in the ancient art of honey harvesting. You'll extract honey from the frames using a traditional centrifuge, filter it, and jar your very own batch to take home. Includes a traditional Lebanese lunch prepared in the village. This is not just a tour — it's a once-in-a-lifetime experience.",
-    "ar": "غمر نادر ليوم كامل متاح فقط بضع مرات كل عام خلال موسم استخراج العسل. تجاوز المراقبة — شمّر عن ساعديك وشارك في فن حصاد العسل القديم. ستستخرج العسل من الإطارات باستخدام جهاز الطرد المركزي التقليدي، وتصفيه، وتعبئ دفعتك الخاصة لأخذها معك. يشمل غداء لبناني تقليدي محضّر في القرية.",
-    "fr": "Une immersion rare d'une journée complète disponible seulement quelques fois par an pendant la saison d'extraction du miel. Allez au-delà de l'observation — retroussez vos manches et participez à l'art ancien de la récolte du miel. Vous extrairez le miel des cadres avec une centrifugeuse traditionnelle, le filtrerez et mettrez en pot votre propre lot. Inclut un déjeuner libanais traditionnel préparé au village."
+    "en": "A rare, full day immersion available only a few times each year during honey extraction season. Go beyond observation: roll up your sleeves and participate in the ancient art of honey harvesting. You'll extract honey from the frames using a traditional centrifuge, filter it, and jar your very own batch to take home. Includes a traditional Lebanese lunch prepared in the village. This is not just a tour; it's a once in a lifetime experience.",
+    "ar": "غمر نادر ليوم كامل متاح فقط بضع مرات كل عام خلال موسم استخراج العسل. تجاوز المراقبة: شمّر عن ساعديك وشارك في فن حصاد العسل القديم. ستستخرج العسل من الإطارات باستخدام جهاز الطرد المركزي التقليدي، وتصفيه، وتعبئ دفعتك الخاصة لأخذها معك. يشمل غداء لبناني تقليدي محضّر في القرية. هذه ليست مجرد جولة؛ إنها تجربة لمرة واحدة في العمر.",
+    "fr": "Une immersion rare d'une journée complète disponible seulement quelques fois par an pendant la saison d'extraction du miel. Allez au-delà de l'observation : retroussez vos manches et participez à l'art ancien de la récolte du miel. Vous extrairez le miel des cadres avec une centrifugeuse traditionnelle, le filtrerez et mettrez en pot votre propre lot. Inclut un déjeuner libanais traditionnel préparé au village. Ce n'est pas qu'une visite : c'est une expérience unique dans une vie."
   },
   "image": "/images/tours/premium-tour.jpg",
   "gallery": [

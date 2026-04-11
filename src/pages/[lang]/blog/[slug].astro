@@ -40,7 +40,7 @@ const date = new Date(post.data.date).toLocaleDateString(
 const allPosts = await getCollection('blog');
 const related = allPosts.filter((p) => p.id !== post.id).slice(0, 2);
 
-const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(`${title} — ${siteConfig.url}/${lang}/blog/${slug}/`)}`;
+const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(`${title} ${siteConfig.url}/${lang}/blog/${slug}/`)}`;
 
 const jsonLd = {
   '@context': 'https://schema.org',

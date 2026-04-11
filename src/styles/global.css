@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /* ============================================
-   THEME — Dany's Bees Design System
-   Inspired by "The Artisanal Alchemist" —
+   THEME: Dany's Bees Design System
+   Inspired by "The Artisanal Alchemist":
    organic editorialism meets Lebanese terroir.
    ============================================ */
 
@@ -58,7 +58,7 @@
 }
 
 /* ============================================
-   FONT FACE — Self-hosted web fonts
+   FONT FACE: Self-hosted web fonts
    ============================================ */
 
 @font-face {
@@ -173,7 +173,7 @@ html[lang="ar"] {
    SIGNATURE ELEMENTS
    ============================================ */
 
-/* Grain overlay — 3% opacity paper texture */
+/* Grain overlay: 3% opacity paper texture */
 .grain-overlay {
   pointer-events: none;
   position: fixed;
@@ -183,7 +183,7 @@ html[lang="ar"] {
   opacity: 0.03;
 }
 
-/* Honey gradient — primary CTA shimmer */
+/* Honey gradient: primary CTA shimmer */
 .honey-gradient {
   background: linear-gradient(135deg, #805600 0%, #d4941a 100%);
 }
@@ -202,7 +202,7 @@ html[lang="ar"] {
    FOCUS & ACCESSIBILITY
    ============================================ */
 
-/* Focus visible — gold ring */
+/* Focus visible: gold ring */
 :focus-visible {
   outline: 2px solid var(--color-gold-500);
   outline-offset: 2px;
@@ -242,7 +242,7 @@ html[lang="ar"] {
 }
 
 /* ============================================
-   PROSE — Blog & long-form content
+   PROSE: Blog & long-form content
    ============================================ */
 
 .prose h2 {
@@ -305,7 +305,7 @@ html[lang="ar"] .prose h3 {
 }
 
 /* ============================================
-   FORM INPUTS — Minimalist bottom-border style
+   FORM INPUTS: Minimalist bottom-border style
    ============================================ */
 
 .form-input {
@@ -334,7 +334,7 @@ html[lang="ar"] .prose h3 {
 }
 
 /* ============================================
-   DETAILS/SUMMARY — FAQ Accordion
+   DETAILS/SUMMARY: FAQ Accordion
    ============================================ */
 
 details summary {
