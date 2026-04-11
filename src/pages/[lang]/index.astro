@@ -110,16 +110,75 @@ const jsonLd = {
     <div id="header-sentinel" class="h-1" aria-hidden="true"></div>
 
     <!-- Trust Strip -->
-    <section class="bg-surface-container-high py-12">
-      <div class="max-w-7xl mx-auto px-6 md:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          <TrustBadge text={t('trust.raw')} icon={`<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`} />
-          <TrustBadge text={t('trust.family')} icon={`<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`} />
-          <TrustBadge text={t('trust.terroir')} icon={`<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 7.5h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" /></svg>`} />
-          <TrustBadge text={t('trust.spoon')} icon={`<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>`} />
-        </div>
+    <section className="bg-surface-container-high py-12">
+    <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+
+        {[
+          {
+            text: t('trust.raw'),
+            icon: (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            )
+          },
+          {
+            text: t('trust.family'),
+            icon: (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            )
+          },
+          {
+            text: t('trust.terroir'),
+            icon: (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21" />
+              </svg>
+            )
+          },
+          {
+            text: t('trust.spoon'),
+            icon: (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21" />
+              </svg>
+            )
+          }
+        ].map((item, i) => (
+          <div key={i} className="flex flex-col items-center text-center">
+
+            {/* HEXAGON */}
+            <div
+              className="
+                w-20
+                aspect-[1/1.1547]
+                flex items-center justify-center
+                text-white
+                shadow-md
+                transition-transform duration-300
+                hover:scale-105
+              "
+              style={{
+                clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)',
+                background: 'linear-gradient(135deg, #a16207, #854d0e)'
+              }}
+            >
+              {item.icon}
+            </div>
+
+            {/* TEXT */}
+            <p className="mt-4 text-sm md:text-base font-medium text-gray-800">
+              {item.text}
+            </p>
+          </div>
+        ))}
+
       </div>
-    </section>
+    </div>
+</section>
 
     <!-- Product Highlights -->
     <section class="py-24 bg-surface">
