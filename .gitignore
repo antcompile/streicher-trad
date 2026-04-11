@@ -21,13 +21,5 @@ Thumbs.db
 # Astro
 .astro/
 
-# Large images (added separately)
-public/images/**/*.jpg
-public/images/**/*.jpeg
-public/images/**/*.png
-public/images/**/*.webp
-!public/images/.gitkeep
-
-
-./real-photos
-./logos
+/real-photos/
+/logos/
