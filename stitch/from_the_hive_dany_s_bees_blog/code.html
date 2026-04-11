@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#95ccff",
+                        "surface-dim": "#dfd9d1",
+                        "on-tertiary-fixed-variant": "#004a75",
+                        "on-secondary-fixed-variant": "#3e4c20",
+                        "secondary-fixed-dim": "#bccd95",
+                        "inverse-primary": "#ffba44",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e8e1da",
+                        "on-secondary-container": "#5b6a3b",
+                        "on-primary-container": "#4c3200",
+                        "surface-container-high": "#eee7df",
+                        "outline": "#837562",
+                        "surface-tint": "#805600",
+                        "on-background": "#1e1b17",
+                        "primary": "#805600",
+                        "on-tertiary-container": "#003a5d",
+                        "secondary-container": "#d8eaaf",
+                        "tertiary": "#006399",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffba44",
+                        "background": "#fff8f1",
+                        "primary-fixed": "#ffddaf",
+                        "on-surface-variant": "#514535",
+                        "surface-variant": "#e8e1da",
+                        "outline-variant": "#d5c4af",
+                        "on-primary-fixed-variant": "#614000",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#d4941a",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#33302b",
+                        "tertiary-fixed": "#cde5ff",
+                        "surface-container": "#f4ede5",
+                        "inverse-on-surface": "#f7f0e8",
+                        "secondary-fixed": "#d8eaaf",
+                        "secondary": "#556436",
+                        "on-tertiary-fixed": "#001d32",
+                        "on-surface": "#1e1b17",
+                        "on-primary-fixed": "#281800",
+                        "tertiary-container": "#4da7ec",
+                        "surface-container-low": "#f9f3eb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#141f00",
+                        "surface-bright": "#fff8f1",
+                        "surface": "#fff8f1",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+        }
+        .text-gradient-honey {
+            background: linear-gradient(135deg, #805600 0%, #d4941a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen">
+<div class="grain-overlay"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200/20 dark:border-stone-800/20 shadow-sm">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-bold font-serif text-amber-900 dark:text-amber-200">Dany's Bees</div>
+<div class="hidden md:flex items-center space-x-8 font-serif text-lg tracking-tight">
+<a class="text-stone-600 dark:text-stone-400 hover:text-amber-800 transition-colors" href="#">Catalog</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-amber-800 transition-colors" href="#">Tours</a>
+<a class="text-amber-700 dark:text-amber-400 border-b-2 border-amber-600 pb-1" href="#">Our Story</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-amber-800 transition-colors" href="#">Contact</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="material-symbols-outlined text-amber-800 dark:text-amber-500 scale-95 duration-200 hover:bg-amber-50/50 p-2 rounded-full">language</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-medium shadow-md transition-transform active:scale-95">
+                    Order via WhatsApp
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Editorial Header -->
+<header class="mb-20 text-center md:text-left relative">
+<div class="absolute -left-12 -top-12 w-32 h-32 bg-secondary-container opacity-20 rounded-full blur-3xl"></div>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tight text-on-background mb-4">
+                From the Hive
+            </h1>
+<p class="font-headline italic text-xl md:text-2xl text-primary max-w-2xl border-l-4 border-primary-container pl-6 py-2">
+                Chronicling the rhythms of Lebanese beekeeping, artisanal tradition, and the golden liquid that sustains us.
+            </p>
+</header>
+<!-- Blog Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
+<!-- Article 1 -->
+<article class="flex flex-col group">
+<div class="relative overflow-hidden rounded-xl mb-8 aspect-[16/10] bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="close-up of a rustic wooden beehive in a sun-drenched Lebanese cedar forest at dawn with soft golden light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBamKIUg5yLaO0gU3o_k4ngcK_T1PT3okFrHfsFw230WWifMyahJ_1Lbh7elmT7WxQINc18A-zK7wmmruELEYZNPSHGN_3z7my7OfS5Du6ccfo3sRcXzYRuufcxX5L8Nblf-EI96g6ml4ABRK8mN1NCJlu-YUjHLM0z9sRkYqH6tV9u7JCAT1-5Al-DexyQBpD0bW7YR14fA4farT_FDU1PouyvOmMc4xv-bUU6cvQnGzUrJ5UcSJe4cYTflQBiyOidrFvlWyZLyWI"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold tracking-wider text-secondary uppercase">Health</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-sm font-label tracking-wide text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> Oct 12, 2024</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="font-semibold text-primary">Dany</span>
+</div>
+<h2 class="font-headline text-3xl font-bold leading-tight group-hover:text-primary transition-colors">
+                        The Seasonal Ritual: Harvesting Under the Mediterranean Sun
+                    </h2>
+<p class="text-on-surface-variant leading-relaxed line-clamp-3 body-lg">
+                        Twice a year, the air in our mountain groves turns thick with the scent of wild thyme and sage. This is the moment we’ve waited for—the harvest of our signature wildflower honey, a process that hasn't changed in three generations.
+                    </p>
+<a class="inline-flex items-center gap-2 font-semibold text-primary group/link" href="#">
+<span class="border-b-2 border-transparent group-hover/link:border-primary-container transition-all">Read More</span>
+<span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="flex flex-col group mt-0 md:mt-24">
+<div class="relative overflow-hidden rounded-xl mb-8 aspect-[16/10] bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="slow motion pour of thick dark amber honey into a glass jar with vibrant wildflower bokeh in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUJv8F0IfXK-gniBY6q5-8CxCFYm16bo1Ve0Q3aXvLaby9nE2k4tpg5ymL9sxi165ji62Y_dZLJBcMW-6_q-et-eUMC_ksYDEbnH57nUFjh9A8AS_0IBM-nmW989BuWXUkhVHtnBhAyeJyP_76cib7No4B8GtenVvlL8nsFrd00oiEsXbhESY8F8gQB2jYjH0Q73tZtvygekwZMfVMqDd8GWj4b8ooqEFHerEF92j-ZsWx2Sutxep8Jfhq0TTJSBJnqzwzmIfkr98"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold tracking-wider text-secondary uppercase">Tradition</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-sm font-label tracking-wide text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> Sep 28, 2024</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="font-semibold text-primary">Dany</span>
+</div>
+<h2 class="font-headline text-3xl font-bold leading-tight group-hover:text-primary transition-colors">
+                        Cedar Honey: Lebanon’s Rare Liquid Gold
+                    </h2>
+<p class="text-on-surface-variant leading-relaxed line-clamp-3 body-lg">
+                        Deep in the Shouf Biosphere Reserve, our bees forage on the secretions of the ancient Cedrus libani. The resulting honey is dark, woody, and remarkably less sweet than its floral counterparts—a medicinal marvel.
+                    </p>
+<a class="inline-flex items-center gap-2 font-semibold text-primary group/link" href="#">
+<span class="border-b-2 border-transparent group-hover/link:border-primary-container transition-all">Read More</span>
+<span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="flex flex-col group">
+<div class="relative overflow-hidden rounded-xl mb-8 aspect-[16/10] bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="macro shot of a honeybee landing on a purple wild lavender flower with morning dew drops" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-uSPJGbU-LMzflbr88JUcbaPmEtMhaT9VJn_IxqpKvIjw1XKRRx8p9zK1R9paCjjXVlfBP3Xrg2efSeVKXZZIoDCXjTmgiIOPhHBZFGIQ-GmnFah5Kzbz7f-LBwpIPmi96LiSiQoCg4wkB-r4C3dKHN7T2gSGA52ZF9Q_LT98zD0_2s6cD39dTMq50QBgHxVQMsGJgEjDOJeEwJR2XHMWbB-htGXs5gxifeSgOhLVApBE32V93C_svWjinw4f_kxMVcoZVhR1jAg"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold tracking-wider text-secondary uppercase">Nature</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-sm font-label tracking-wide text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> Aug 15, 2024</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="font-semibold text-primary">Dany</span>
+</div>
+<h2 class="font-headline text-3xl font-bold leading-tight group-hover:text-primary transition-colors">
+                        Beekeeping for a Sustainable Future
+                    </h2>
+<p class="text-on-surface-variant leading-relaxed line-clamp-3 body-lg">
+                        Climate change is shifting the bloom patterns of our mountains. Discover how we are adapting our nomadic beekeeping routes to protect our colonies and ensure the longevity of Lebanese biodiversity.
+                    </p>
+<a class="inline-flex items-center gap-2 font-semibold text-primary group/link" href="#">
+<span class="border-b-2 border-transparent group-hover/link:border-primary-container transition-all">Read More</span>
+<span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Article 4 -->
+<article class="flex flex-col group mt-0 md:mt-24">
+<div class="relative overflow-hidden rounded-xl mb-8 aspect-[16/10] bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="flat lay of a Lebanese breakfast spread with labneh, olive oil, and honey drizzled over fresh bread" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4fdLRQ4uTBDnQPL1r8qOhWIpluWExN_QhJ7kqRaqjek5BiFUbO0nxg0c_3UP5gzlxFwxBt4VL3te7HODh4oC1kNl3CqAWrylmyWtVhCoHG1Gak1duhpuEeCB1KumI1k9QNVQ071fqq11_Rk6MlCnSaxoYizxUMGWbPXWZynDZRE2WtSh64CRm-Nh2L2b_5KTCAOvNHdNZwEqXrmzsh2Q2WyXLxR5DWSxEEeXWz9B-LAH7PB_0oSndhNilnIcax784_0i99LUvM5Y"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold tracking-wider text-secondary uppercase">Lifestyle</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-sm font-label tracking-wide text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> Jul 22, 2024</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="font-semibold text-primary">Dany</span>
+</div>
+<h2 class="font-headline text-3xl font-bold leading-tight group-hover:text-primary transition-colors">
+                        Healing Rhythms: The Ritual of the Honey Spoon
+                    </h2>
+<p class="text-on-surface-variant leading-relaxed line-clamp-3 body-lg">
+                        In many Lebanese households, the day begins with a single spoonful of honey in warm water. Explore the antibacterial benefits and digestive magic of this ancient daily wellness ritual.
+                    </p>
+<a class="inline-flex items-center gap-2 font-semibold text-primary group/link" href="#">
+<span class="border-b-2 border-transparent group-hover/link:border-primary-container transition-all">Read More</span>
+<span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<nav class="flex justify-center items-center gap-4 mt-32">
+<button class="w-12 h-12 rounded-full flex items-center justify-center border border-outline-variant text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="font-label font-bold text-primary px-4">1</span>
+<button class="font-label text-on-surface-variant hover:text-primary transition-colors px-4">2</button>
+<button class="font-label text-on-surface-variant hover:text-primary transition-colors px-4">3</button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center border border-outline-variant text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-stone-900 w-full py-12 px-8 mt-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<div class="space-y-4">
+<div class="font-serif italic text-lg text-amber-900 dark:text-amber-100">Dany's Bees</div>
+<p class="text-stone-500 dark:text-stone-500 text-sm tracking-wide">© 2024 Dany's Bees. Crafted in the heart of Lebanon.</p>
+</div>
+<div>
+<h4 class="font-semibold text-amber-700 mb-6 font-sans text-sm tracking-wide">Explore</h4>
+<ul class="space-y-3">
+<li><a class="text-stone-500 dark:text-stone-500 hover:text-amber-600 dark:hover:text-amber-400 underline decoration-stone-300 transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a></li>
+<li><a class="text-stone-500 dark:text-stone-500 hover:text-amber-600 dark:hover:text-amber-400 underline decoration-stone-300 transition-opacity opacity-80 hover:opacity-100" href="#">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-amber-700 mb-6 font-sans text-sm tracking-wide">Partnerships</h4>
+<ul class="space-y-3">
+<li><a class="text-stone-500 dark:text-stone-500 hover:text-amber-600 dark:hover:text-amber-400 underline decoration-stone-300 transition-opacity opacity-80 hover:opacity-100" href="#">Wholesale</a></li>
+<li><a class="text-stone-500 dark:text-stone-500 hover:text-amber-600 dark:hover:text-amber-400 underline decoration-stone-300 transition-opacity opacity-80 hover:opacity-100" href="#">Tour FAQ</a></li>
+</ul>
+</div>
+<div class="flex flex-col items-start space-y-4">
+<h4 class="font-semibold text-amber-700 font-sans text-sm tracking-wide">Follow the Flight</h4>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-amber-900 dark:text-amber-100 p-2 rounded-full hover:bg-amber-50 dark:hover:bg-stone-800 transition-colors">share</button>
+<button class="material-symbols-outlined text-amber-900 dark:text-amber-100 p-2 rounded-full hover:bg-amber-50 dark:hover:bg-stone-800 transition-colors">public</button>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
