@@ -1,0 +1,12 @@
+{
+  "name": "Pierre D.",
+  "location": { "en": "Lyon", "ar": "ليون", "fr": "Lyon" },
+  "quote": {
+    "en": "We discovered Dany's Bees during the harvest experience tour. Extracting honey with our own hands was magical. The large jar we brought home lasted only a week!",
+    "ar": "اكتشفنا عسل داني خلال جولة تجربة الحصاد. استخراج العسل بأيدينا كان سحرياً. الجرة الكبيرة التي أحضرناها معنا لم تدم إلا أسبوعاً!",
+    "fr": "Nous avons découvert Dany's Bees lors de l'expérience de récolte. Extraire le miel de nos propres mains était magique. Le grand pot que nous avons rapporté n'a duré qu'une semaine !"
+  },
+  "type": "tour",
+  "rating": 5,
+  "date": "2025-08-12"
+}

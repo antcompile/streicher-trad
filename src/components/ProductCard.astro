@@ -1,0 +1,91 @@
+---
+import type { Lang } from '../i18n/languages';
+import { useTranslation, getLocalizedContent } from '../i18n/utils';
+import { getWhatsAppOrderUrl } from '../data/siteConfig';
+
+interface Props {
+  product: {
+    id: string;
+    data: {
+      id: string;
+      name: Record<string, string>;
+      price_usd: number;
+      weight_kg: number;
+      tasting_notes: Record<string, string>;
+      flora_source: Record<string, string>;
+      image: string;
+      badge: string | null;
+      includes_spoon: boolean;
+    };
+  };
+  lang: Lang;
+}
+
+const { product, lang } = Astro.props;
+const t = useTranslation(lang);
+const d = product.data;
+const name = getLocalizedContent(d.name, lang);
+const notes = getLocalizedContent(d.tasting_notes, lang);
+const flora = getLocalizedContent(d.flora_source, lang);
+const whatsappUrl = getWhatsAppOrderUrl(name, lang);
+
+const badgeLabels: Record<string, Record<string, string>> = {
+  'most-popular': { en: 'Most Popular', ar: 'الأكثر شعبية', fr: 'Le Plus Populaire' },
+  'raw-comb': { en: 'Raw Comb', ar: 'شمع خام', fr: 'Rayon Brut' },
+};
+const badgeText = d.badge ? (badgeLabels[d.badge]?.[lang] || d.badge) : null;
+---
+
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1">
+  {badgeText && (
+    <div class="absolute top-4 start-4 z-10">
+      <span class="bg-primary text-white px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full shadow-lg">
+        {badgeText}
+      </span>
+    </div>
+  )}
+
+  <a href={`/${lang}/products/${product.id}/`} class="block">
+    <div class="aspect-[4/5] overflow-hidden">
+      <img
+        src={d.image}
+        alt={name}
+        loading="lazy"
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+    </div>
+  </a>
+
+  <div class="p-6 md:p-8">
+    <div class="flex justify-between items-start mb-3">
+      <div>
+        <h3 class="text-xl md:text-2xl font-serif text-dark mb-1">
+          <a href={`/${lang}/products/${product.id}/`} class="hover:text-primary transition-colors">
+            {name}
+          </a>
+        </h3>
+        <div class="inline-flex items-center px-2 py-1 bg-secondary-container text-olive text-xs rounded-md">
+          {flora}
+        </div>
+      </div>
+      <span class="text-xl font-serif text-primary flex-shrink-0 ms-4">
+        ${d.price_usd}
+        <span class="text-sm font-sans text-muted">/{d.weight_kg}kg</span>
+      </span>
+    </div>
+
+    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed italic">"{notes}"</p>
+
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-full flex items-center justify-center gap-2 py-3 border-b border-transparent hover:border-primary text-primary font-medium transition-all group/btn"
+    >
+      {t('products.order_whatsapp')}
+      <svg class="w-4 h-4 transition-transform group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
+    </a>
+  </div>
+</div>

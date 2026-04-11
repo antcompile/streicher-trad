@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Hexagon -->
+  <polygon points="50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5" fill="#D4941A" stroke="#805600" stroke-width="2"/>
+  <!-- Simplified bee body -->
+  <ellipse cx="50" cy="52" rx="14" ry="18" fill="#FFF8F0"/>
+  <!-- Bee stripes -->
+  <rect x="36" y="46" width="28" height="4" rx="2" fill="#805600"/>
+  <rect x="36" y="54" width="28" height="4" rx="2" fill="#805600"/>
+  <rect x="36" y="62" width="28" height="4" rx="2" fill="#805600"/>
+  <!-- Wings -->
+  <ellipse cx="38" cy="40" rx="10" ry="8" fill="#FFF8F0" opacity="0.7" transform="rotate(-20 38 40)"/>
+  <ellipse cx="62" cy="40" rx="10" ry="8" fill="#FFF8F0" opacity="0.7" transform="rotate(20 62 40)"/>
+  <!-- Crown -->
+  <path d="M38,28 L42,20 L46,26 L50,18 L54,26 L58,20 L62,28" stroke="#805600" stroke-width="2" fill="none"/>
+  <line x1="38" y1="28" x2="62" y2="28" stroke="#805600" stroke-width="2"/>
+</svg>

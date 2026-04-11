@@ -1,0 +1,23 @@
+{
+  "name": "Dany's Bees — Pure Honey from Lebanon",
+  "short_name": "Dany's Bees",
+  "description": "Pure honey from the mountains of Northern Lebanon. Family-crafted in Ashkar since the 1980s.",
+  "start_url": "/en/",
+  "display": "standalone",
+  "background_color": "#fff8f1",
+  "theme_color": "#D4941A",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en",
+  "dir": "ltr"
+}

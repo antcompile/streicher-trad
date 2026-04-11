@@ -1,0 +1,350 @@
+@import "tailwindcss";
+
+/* ============================================
+   THEME — Dany's Bees Design System
+   Inspired by "The Artisanal Alchemist" —
+   organic editorialism meets Lebanese terroir.
+   ============================================ */
+
+@theme {
+  /* --- Primary & Accent --- */
+  --color-primary: #805600;
+  --color-primary-container: #d4941a;
+  --color-gold-300: #F5D78E;
+  --color-gold-500: #D4941A;
+  --color-gold-600: #B8860B;
+  --color-primary-fixed: #ffddaf;
+  --color-primary-fixed-dim: #ffba44;
+
+  /* --- Surface Hierarchy (tonal layering) --- */
+  --color-surface: #fff8f1;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f9f3eb;
+  --color-surface-container: #f4ede5;
+  --color-surface-container-high: #eee7df;
+  --color-surface-container-highest: #e8e1da;
+
+  /* --- Aliases for prompt compatibility --- */
+  --color-cream: #fff8f1;
+  --color-cream-dark: #f9f3eb;
+
+  /* --- Text --- */
+  --color-dark: #1e1b17;
+  --color-muted: #514535;
+  --color-on-surface-variant: #514535;
+  --color-outline: #837562;
+  --color-outline-variant: #d5c4af;
+
+  /* --- Secondary (olive / nature) --- */
+  --color-olive: #556436;
+  --color-olive-light: #d8eaaf;
+  --color-secondary: #556436;
+  --color-secondary-container: #d8eaaf;
+
+  /* --- Semantic --- */
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-success: #588157;
+
+  /* --- Inverse (dark footer) --- */
+  --color-inverse-surface: #33302b;
+  --color-inverse-on-surface: #f7f0e8;
+
+  /* --- Fonts --- */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-arabic-serif: 'Noto Naskh Arabic', serif;
+  --font-arabic-sans: 'Noto Sans Arabic', sans-serif;
+}
+
+/* ============================================
+   FONT FACE — Self-hosted web fonts
+   ============================================ */
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/fonts/PlayfairDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/fonts/PlayfairDisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Naskh Arabic';
+  src: url('/fonts/NotoNaskhArabic-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Naskh Arabic';
+  src: url('/fonts/NotoNaskhArabic-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans Arabic';
+  src: url('/fonts/NotoSansArabic-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans Arabic';
+  src: url('/fonts/NotoSansArabic-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-surface);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-dark);
+  line-height: 1.625;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Arabic font overrides */
+html[lang="ar"] body {
+  font-family: var(--font-arabic-sans);
+}
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6 {
+  font-family: var(--font-arabic-serif);
+}
+
+/* Arabic line-height increase (20% more for flourishes) */
+html[lang="ar"] {
+  line-height: 1.95;
+}
+
+/* ============================================
+   SIGNATURE ELEMENTS
+   ============================================ */
+
+/* Grain overlay — 3% opacity paper texture */
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+}
+
+/* Honey gradient — primary CTA shimmer */
+.honey-gradient {
+  background: linear-gradient(135deg, #805600 0%, #d4941a 100%);
+}
+
+/* Hexagon clip-path for decorative elements */
+.hexagon-mask {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+/* Honeycomb background pattern (very subtle, 4% opacity) */
+.honeycomb-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66ZM28 100L0 84L0 50L28 34L56 50L56 84L28 100Z' fill='none' stroke='%23D4941A' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ============================================
+   FOCUS & ACCESSIBILITY
+   ============================================ */
+
+/* Focus visible — gold ring */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-gold-500);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 0.5rem 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   PROSE — Blog & long-form content
+   ============================================ */
+
+.prose h2 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-dark);
+}
+
+.prose h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-dark);
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1rem;
+  padding-inline-start: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+.prose ul li {
+  list-style-type: disc;
+}
+
+.prose ol li {
+  list-style-type: decimal;
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+.prose blockquote {
+  border-inline-start: 4px solid var(--color-gold-500);
+  padding-inline-start: 1rem;
+  font-style: italic;
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+}
+
+html[lang="ar"] .prose h2,
+html[lang="ar"] .prose h3 {
+  font-family: var(--font-arabic-serif);
+}
+
+/* ============================================
+   FORM INPUTS — Minimalist bottom-border style
+   ============================================ */
+
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-outline-variant);
+  padding: 0.5rem 0;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-bottom-color: var(--color-primary);
+  box-shadow: none;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-secondary);
+  margin-bottom: 0.25rem;
+}
+
+/* ============================================
+   DETAILS/SUMMARY — FAQ Accordion
+   ============================================ */
+
+details summary {
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] summary .faq-chevron {
+  transform: rotate(180deg);
+}

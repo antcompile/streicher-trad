@@ -1,0 +1,12 @@
+{
+  "name": "Marie L.",
+  "location": { "en": "Paris", "ar": "باريس", "fr": "Paris" },
+  "quote": {
+    "en": "The tour was the highlight of our Lebanon trip. My children loved learning about the bees, and the honey tasting was unforgettable.",
+    "ar": "كانت الجولة أبرز لحظات رحلتنا إلى لبنان. أطفالي أحبوا التعلم عن النحل، وتذوق العسل كان لا يُنسى.",
+    "fr": "La visite a été le point fort de notre voyage au Liban. Mes enfants ont adoré découvrir les abeilles, et la dégustation de miel était inoubliable."
+  },
+  "type": "tour",
+  "rating": 5,
+  "date": "2025-09-20"
+}

@@ -1,0 +1,63 @@
+---
+import type { Lang } from '../i18n/languages';
+import { supportedLangs } from '../i18n/languages';
+import { siteConfig } from '../data/siteConfig';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  lang: Lang;
+  slug: string;
+  type?: 'website' | 'article' | 'product';
+  jsonLd?: Record<string, any>;
+}
+
+const {
+  title,
+  description,
+  image = '/images/logos/logo-icon.svg',
+  lang,
+  slug,
+  type = 'website',
+  jsonLd,
+} = Astro.props;
+
+const fullTitle = `${title} | Dany's Bees`;
+const canonicalUrl = `${siteConfig.url}/${lang}/${slug}`.replace(/\/+$/, '/');
+const imageUrl = image.startsWith('http') ? image : `${siteConfig.url}${image}`;
+
+const localeMap: Record<string, string> = {
+  en: 'en_US',
+  ar: 'ar_LB',
+  fr: 'fr_FR',
+};
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:type" content={type === 'article' ? 'article' : 'website'} />
+<meta property="og:locale" content={localeMap[lang] || 'en_US'} />
+<meta property="og:site_name" content="Dany's Bees" />
+
+<!-- hreflang alternates -->
+{supportedLangs.map((l) => (
+  <link
+    rel="alternate"
+    hreflang={l}
+    href={`${siteConfig.url}/${l}/${slug}`.replace(/\/+$/, '/')}
+  />
+))}
+<link rel="alternate" hreflang="x-default" href={`${siteConfig.url}/en/${slug}`.replace(/\/+$/, '/')} />
+
+<!-- JSON-LD -->
+{jsonLd && (
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+)}

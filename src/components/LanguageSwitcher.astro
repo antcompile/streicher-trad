@@ -1,0 +1,51 @@
+---
+import { languages, type Lang } from '../i18n/languages';
+
+interface Props {
+  currentLang: Lang;
+  currentPath: string;
+}
+
+const { currentLang, currentPath } = Astro.props;
+
+function getPathInLang(targetLang: string): string {
+  const segments = currentPath.split('/').filter(Boolean);
+  if (segments[0] && Object.keys(languages).includes(segments[0])) {
+    segments[0] = targetLang;
+  } else {
+    segments.unshift(targetLang);
+  }
+  return '/' + segments.join('/') + '/';
+}
+---
+
+<nav aria-label="Language switcher" class="flex items-center gap-1 text-sm font-medium">
+  {Object.entries(languages).map(([code, config], i) => (
+    <>
+      {i > 0 && <span class="text-outline-variant" aria-hidden="true">|</span>}
+      <a
+        href={getPathInLang(code)}
+        class:list={[
+          'px-1.5 py-0.5 rounded transition-colors',
+          code === currentLang
+            ? 'text-primary font-bold'
+            : 'text-muted hover:text-primary',
+        ]}
+        aria-current={code === currentLang ? 'true' : undefined}
+        lang={code}
+        data-lang-switch={code}
+      >
+        {code.toUpperCase()}
+      </a>
+    </>
+  ))}
+</nav>
+
+<script>
+  document.querySelectorAll('[data-lang-switch]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const lang = (link as HTMLElement).dataset.langSwitch;
+      if (lang) localStorage.setItem('danysbees-lang', lang);
+    });
+  });
+</script>

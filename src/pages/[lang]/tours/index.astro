@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SEO from '../../../components/SEO.astro';
+import TourCard from '../../../components/TourCard.astro';
+import BookingForm from '../../../components/BookingForm.astro';
+import { supportedLangs, type Lang } from '../../../i18n/languages';
+import { useTranslation } from '../../../i18n/utils';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '../../../data/siteConfig';
+
+export function getStaticPaths() {
+  return supportedLangs.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslation(lang);
+const currentPath = `/${lang}/tours/`;
+const tours = await getCollection('tours');
+const standardTour = tours.find((t) => t.data.id === 'standard');
+const premiumTour = tours.find((t) => t.data.id === 'premium');
+
+const steps = [
+  { key: 'step1', icon: '1' },
+  { key: 'step2', icon: '2' },
+  { key: 'step3', icon: '3' },
+  { key: 'step4', icon: '4' },
+  { key: 'step5', icon: '5' },
+  { key: 'step6', icon: '6' },
+];
+
+const faqs = ['wear', 'children', 'rain', 'distance', 'buy', 'directions', 'camera', 'allergy'];
+---
+
+<BaseLayout lang={lang} title={`${t('tours.hero_title')} | Dany's Bees`}>
+  <Fragment slot="head">
+    <SEO
+      title={t('tours.hero_title')}
+      description={t('tours.hero_subtitle')}
+      lang={lang}
+      slug="tours/"
+    />
+  </Fragment>
+
+  <Header lang={lang} currentPath={currentPath} transparent />
+
+  <main id="main-content">
+    <!-- Hero -->
+    <header class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+      <img src="/images/tours/standard-tour.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-dark/40"></div>
+      <div class="relative z-10 text-center px-6 max-w-4xl">
+        <h1 class="text-4xl md:text-7xl font-serif font-bold text-white mb-6 tracking-tight">{t('tours.hero_title')}</h1>
+        <p class="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mx-auto">{t('tours.hero_subtitle')}</p>
+      </div>
+    </header>
+    <div id="header-sentinel" class="h-1" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-24 space-y-32">
+      <!-- Tour Tiers -->
+      <section>
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-serif font-bold text-dark mb-4">{t('tours.heading')}</h2>
+          <div class="w-24 h-1 bg-primary-container mx-auto"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          {standardTour && <TourCard tour={standardTour} lang={lang} />}
+          {premiumTour && <TourCard tour={premiumTour} lang={lang} featured />}
+        </div>
+      </section>
+
+      <!-- What to Expect -->
+      <section class="bg-surface-container-low -mx-6 md:-mx-8 px-6 md:px-8 py-24 rounded-3xl">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-4xl font-serif text-center mb-16">{t('tours.what_to_expect')}</h2>
+          <div class="relative space-y-12">
+            <div class="absolute start-[26px] top-4 bottom-4 w-0.5 bg-outline-variant/30 hidden md:block" aria-hidden="true"></div>
+            {steps.map((step) => (
+              <div class="grid md:grid-cols-[60px_1fr] gap-6 md:gap-8 items-start relative">
+                <div class="hexagon-mask w-[54px] h-[60px] bg-primary flex items-center justify-center text-white font-bold text-xl relative z-10 flex-shrink-0">
+                  {step.icon}
+                </div>
+                <div class="pt-1">
+                  <h4 class="text-xl font-bold text-primary">{t(`tours.${step.key}_title`)}</h4>
+                  <p class="text-on-surface-variant mt-2 leading-relaxed">{t(`tours.${step.key}_desc`)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Photo Gallery -->
+      <section>
+        <h2 class="text-4xl font-serif text-center mb-16">{t('tours.photo_gallery')}</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[1,2,3,4,5,6].map((n) => (
+            <a href={`/images/tours/gallery-${n}.jpg`} target="_blank" rel="noopener" class="rounded-xl overflow-hidden aspect-[4/3] block">
+              <img src={`/images/tours/gallery-${n}.jpg`} alt="" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="max-w-3xl mx-auto">
+        <h2 class="text-4xl font-serif text-center mb-12">{t('tours.faq')}</h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-surface-container-low rounded-xl">
+              <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-dark">
+                {t(`tours.faq_${faq}_q`)}
+                <svg class="w-5 h-5 text-muted transition-transform group-open:rotate-180 faq-chevron flex-shrink-0 ms-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                {t(`tours.faq_${faq}_a`)}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Booking Form -->
+      <BookingForm lang={lang} />
+
+      <!-- Prefer to talk -->
+      <section class="text-center bg-secondary-container/30 py-16 rounded-3xl border-2 border-dashed border-secondary/20">
+        <h3 class="text-3xl font-serif mb-6 text-dark">{t('booking.prefer_call')}</h3>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-6 text-xl font-medium text-secondary">
+          <a href={`tel:${siteConfig.phoneRaw}`} class="hover:text-primary transition-colors" dir="ltr">{siteConfig.phone}</a>
+          <span class="hidden md:block w-2 h-2 bg-secondary/30 rounded-full" aria-hidden="true"></span>
+          <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-primary transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            {t('common.whatsapp')}
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Sticky mobile CTA -->
+  <div class="fixed bottom-0 inset-x-0 z-40 p-4 bg-surface-container-lowest/95 backdrop-blur-sm border-t border-outline-variant/10 md:hidden">
+    <a href="#booking" class="honey-gradient text-white w-full py-3 rounded-xl font-bold shadow-lg flex items-center justify-center">
+      {t('booking.mobile_cta')}
+    </a>
+  </div>
+
+  <Footer lang={lang} />
+</BaseLayout>

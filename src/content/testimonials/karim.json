@@ -1,0 +1,12 @@
+{
+  "name": "Karim B.",
+  "location": { "en": "Dubai", "ar": "دبي", "fr": "Dubaï" },
+  "quote": {
+    "en": "Dark oak honey from Dany's is a staple in our home. Rich, medicinal, and incredibly deep flavor. We order every season.",
+    "ar": "عسل السنديان الداكن من عند داني أساسي في بيتنا. غني، طبي، ونكهة عميقة بشكل لا يصدق. نطلب كل موسم.",
+    "fr": "Le miel de chêne sombre de chez Dany est un incontournable chez nous. Riche, médicinal, avec une profondeur de saveur incroyable."
+  },
+  "type": "product",
+  "rating": 5,
+  "date": "2025-12-03"
+}

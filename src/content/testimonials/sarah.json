@@ -1,0 +1,12 @@
+{
+  "name": "Sarah M.",
+  "location": { "en": "Beirut", "ar": "بيروت", "fr": "Beyrouth" },
+  "quote": {
+    "en": "The best honey I've ever tasted. You can really taste the difference from store-bought. The thyme honey is absolutely incredible.",
+    "ar": "أفضل عسل تذوقته في حياتي. تستطيع فعلاً تذوق الفرق عن العسل المُشترى من المتاجر. عسل الزعتر لا يصدق.",
+    "fr": "Le meilleur miel que j'ai jamais goûté. On sent vraiment la différence avec le miel du commerce. Le miel de thym est absolument incroyable."
+  },
+  "type": "product",
+  "rating": 5,
+  "date": "2025-11-15"
+}
