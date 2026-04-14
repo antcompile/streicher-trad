@@ -3,11 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import SEO from '../../components/SEO.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
-import TrustBadge from '../../components/TrustBadge.astro';
-import ProductCard from '../../components/ProductCard.astro';
 import BlogCard from '../../components/BlogCard.astro';
-import TestimonialCard from '../../components/TestimonialCard.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import { supportedLangs, type Lang } from '../../i18n/languages';
 import { useTranslation, getLocalizedContent } from '../../i18n/utils';
@@ -22,35 +18,48 @@ const { lang } = Astro.params as { lang: Lang };
 const t = useTranslation(lang);
 const currentPath = `/${lang}/`;
 
-const allProducts = await getCollection('products');
-const featuredProducts = allProducts.filter((p) =>
-  ['thyme', 'wildflower', 'oak'].includes(p.data.id)
-);
-const allTestimonials = await getCollection('testimonials');
-const testimonials = allTestimonials.slice(0, 3);
 const allPosts = await getCollection('blog');
-const latestPosts = allPosts.sort((a, b) =>
-  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-).slice(0, 3);
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: "Dany's Bees",
+  '@type': 'FinancialService',
+  name: 'Streicher Trad',
   description: t('hero.subtitle'),
   url: siteConfig.url,
-  telephone: siteConfig.phone,
+  telephone: siteConfig.phoneRaw,
   email: siteConfig.email,
+  areaServed: {
+    '@type': 'Country',
+    name: 'France',
+  },
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'ORIAS',
+    recognizedBy: {
+      '@type': 'Organization',
+      name: 'ORIAS',
+    },
+    identifier: siteConfig.orias,
+  },
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Barhalioun',
-    addressRegion: 'North Lebanon',
-    addressCountry: 'LB',
+    addressCountry: 'FR',
   },
+  sameAs: [],
+  serviceType: [
+    'Conseil en Investissements Financiers',
+    'Prevoyance',
+    'Epargne',
+    'Retraite',
+    'Optimisation Patrimoniale',
+  ],
 };
 ---
 
-<BaseLayout lang={lang} title={`${t('hero.title')} | Dany's Bees`}>
+<BaseLayout lang={lang} title={`${t('hero.title')} | Streicher Trad`}>
   <Fragment slot="head">
     <SEO
       title={t('hero.title')}
@@ -64,167 +73,279 @@ const jsonLd = {
   <Header lang={lang} currentPath={currentPath} transparent />
 
   <main id="main-content">
-    <!-- Hero -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden honeycomb-bg">
+    <!-- ========== HERO ========== -->
+    <section class="relative min-h-[870px] flex items-center overflow-hidden plum-gradient text-white">
+      <!-- Abstract background blobs -->
       <div class="absolute inset-0 z-0">
-        <img
-          src="/images/hero/mountains.jpg"
-          alt={t('hero.subtitle')}
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-dark/35"></div>
+        <div class="absolute top-[-10%] right-[-10%] w-[60%] h-[80%] bg-primary-fixed-dim/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-[-20%] left-[-5%] w-[40%] h-[60%] bg-tertiary-container/20 rounded-full blur-3xl"></div>
       </div>
-
-      <div class="relative z-10 text-center px-4 max-w-4xl">
-        <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl text-white mb-8 leading-tight tracking-tight">
-          {t('hero.title')}
-        </h1>
-        <p class="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-          {t('hero.subtitle')}
-        </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a
-            href={`/${lang}/products/`}
-            class="honey-gradient text-white px-10 py-4 rounded-xl text-lg font-medium shadow-xl hover:scale-105 transition-transform"
-          >
-            {t('hero.cta_shop')}
-          </a>
-          <a
-            href={`/${lang}/tours/`}
-            class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-xl text-lg font-medium hover:bg-white/20 transition-all"
-          >
-            {t('hero.cta_tour')}
-          </a>
+      <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
+        <div class="md:max-w-3xl">
+          <span class="inline-block text-primary-fixed tracking-[0.2em] font-bold uppercase mb-6 text-sm">
+            {t('hero.label')}
+          </span>
+          <h1 class="text-5xl md:text-7xl font-black font-headline leading-[1.1] mb-8 tracking-tighter">
+            {t('hero.title')}
+          </h1>
+          <p class="text-xl text-primary-fixed/80 max-w-xl mb-12 font-medium leading-relaxed">
+            {t('hero.subtitle')}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6">
+            <a
+              href={`/${lang}/contact/`}
+              class="bg-surface text-primary px-8 py-4 rounded-md font-bold text-lg hover:bg-surface-container-low transition-colors shadow-lg text-center"
+            >
+              {t('hero.cta_primary')}
+            </a>
+            <a
+              href="#expertises"
+              class="border-2 border-white/30 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-white/10 transition-colors backdrop-blur-sm text-center"
+            >
+              {t('hero.cta_secondary')}
+            </a>
+          </div>
         </div>
-      </div>
-
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" aria-hidden="true">
-        <svg class="w-6 h-6 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
       </div>
     </section>
 
-    <!-- Header scroll sentinel -->
+    <!-- Header sentinel -->
     <div id="header-sentinel" class="h-1" aria-hidden="true"></div>
 
-    <!-- Trust Strip -->
-    <section class="bg-surface-container-high py-12">
+    <!-- ========== TRUST BAR ========== -->
+    <section class="bg-surface-container-low py-8">
       <div class="max-w-7xl mx-auto px-6 md:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          <TrustBadge text={t('trust.raw')} icon={`<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`} />
-          <TrustBadge text={t('trust.family')} icon={`<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`} />
-          <TrustBadge text={t('trust.terroir')} icon={`<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 7.5h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" /></svg>`} />
-          <TrustBadge text={t('trust.spoon')} icon={`<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>`} />
-        </div>
-      </div>
-    </section>
-
-    <!-- Product Highlights -->
-    <section class="py-24 bg-surface">
-      <div class="max-w-7xl mx-auto px-6 md:px-8">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-          <div class="max-w-xl">
-            <h2 class="font-serif text-4xl md:text-5xl text-primary mb-4 italic">{t('products.heading')}</h2>
-            <p class="text-on-surface-variant text-lg">{t('products.subtitle')}</p>
+        <div class="flex flex-wrap justify-between items-center gap-6 md:gap-8">
+          <!-- ORIAS -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-dark">{t('trust.orias')}</span>
           </div>
-          <a class="text-primary font-medium flex items-center gap-2 group flex-shrink-0" href={`/${lang}/products/`}>
-            {t('products.view_all')}
-            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          {featuredProducts.map((product) => (
-            <ProductCard product={product} lang={lang} />
-          ))}
+          <!-- France -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-dark">{t('trust.france')}</span>
+          </div>
+          <!-- Independent -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.97zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.97z" />
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-dark">{t('trust.independent')}</span>
+          </div>
+          <!-- Appointment -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-dark">{t('trust.appointment')}</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Story Teaser -->
-    <section class="py-24 bg-surface-container-low overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <div class="relative order-2 md:order-1">
-          <div class="absolute -top-12 -start-12 w-48 h-48 bg-secondary-container opacity-30 hexagon-mask z-0" aria-hidden="true"></div>
-          <img
-            src="/images/about/beekeeper.jpg"
-            alt={t('story_teaser.heading')}
-            loading="lazy"
-            class="relative z-10 w-full rounded-2xl shadow-2xl"
-          />
-        </div>
-        <div class="order-1 md:order-2 space-y-8">
-          <span class="text-secondary font-medium tracking-widest uppercase text-sm">{t('story_teaser.label')}</span>
-          <h2 class="font-serif text-3xl md:text-5xl text-primary leading-tight">
-            {t('story_teaser.heading')}
+    <!-- ========== EXPERTISES ========== -->
+    <section id="expertises" class="py-24 bg-surface">
+      <div class="max-w-7xl mx-auto px-6 md:px-8">
+        <div class="mb-16">
+          <span class="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-4 block">
+            {t('expertises.label')}
+          </span>
+          <h2 class="font-headline font-black text-4xl md:text-5xl text-dark tracking-tighter">
+            {t('expertises.heading')}
           </h2>
-          <p class="text-on-surface-variant text-lg leading-relaxed">
-            {t('story_teaser.text')}
-          </p>
-          <a class="text-primary-container font-bold border-b-2 border-primary-container pb-1 inline-block hover:opacity-80 transition-opacity" href={`/${lang}/about/`}>
-            {t('story_teaser.cta')}
-          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Prevoyance -->
+          <div class="group relative bg-surface-container-lowest p-10 rounded-xl ghost-border hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+              <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+              </svg>
+            </div>
+            <h3 class="font-headline font-bold text-xl text-dark mb-3">{t('expertises.prevoyance_title')}</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">{t('expertises.prevoyance_desc')}</p>
+            <!-- Decorative background icon -->
+            <div class="absolute bottom-4 right-4 opacity-[0.04] group-hover:opacity-[0.07] transition-opacity" aria-hidden="true">
+              <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L3.6 6v5.4c0 5.1 3.6 9.9 8.4 11.1 4.8-1.2 8.4-6 8.4-11.1V6L12 2z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Epargne -->
+          <div class="group relative bg-surface-container-lowest p-10 rounded-xl ghost-border hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+              <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+              </svg>
+            </div>
+            <h3 class="font-headline font-bold text-xl text-dark mb-3">{t('expertises.epargne_title')}</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">{t('expertises.epargne_desc')}</p>
+            <div class="absolute bottom-4 right-4 opacity-[0.04] group-hover:opacity-[0.07] transition-opacity" aria-hidden="true">
+              <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Retraite -->
+          <div class="group relative bg-surface-container-lowest p-10 rounded-xl ghost-border hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+              <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="font-headline font-bold text-xl text-dark mb-3">{t('expertises.retraite_title')}</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">{t('expertises.retraite_desc')}</p>
+            <div class="absolute bottom-4 right-4 opacity-[0.04] group-hover:opacity-[0.07] transition-opacity" aria-hidden="true">
+              <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Patrimoine -->
+          <div class="group relative bg-surface-container-lowest p-10 rounded-xl ghost-border hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+              <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 7.5h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+              </svg>
+            </div>
+            <h3 class="font-headline font-bold text-xl text-dark mb-3">{t('expertises.patrimoine_title')}</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">{t('expertises.patrimoine_desc')}</p>
+            <div class="absolute bottom-4 right-4 opacity-[0.04] group-hover:opacity-[0.07] transition-opacity" aria-hidden="true">
+              <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M1 11v10h6v-5h2v5h6V11L8 6l-7 5zm12 8h-2v-5H5v5H3v-7l5-3.5 5 3.5v7z" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Tour Teaser -->
-    <section class="py-24 bg-surface">
-      <div class="max-w-7xl mx-auto px-6 md:px-8">
-        <SectionHeading title={t('tours.heading')} subtitle={t('tours.subtitle')} />
+    <!-- ========== APPROACH ========== -->
+    <section id="approach" class="py-24 bg-surface-container-low relative overflow-hidden">
+      <!-- Decorative skewed background -->
+      <div class="absolute inset-0 -skew-y-2 bg-surface-container-low origin-top-left" aria-hidden="true"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 mb-12" style="min-height: 400px;">
-          <div class="md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden relative">
-            <img src="/images/tours/gallery-1.jpg" alt="" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <!-- Left: text content -->
+          <div class="lg:col-span-5 space-y-8">
+            <span class="text-primary font-bold tracking-[0.2em] uppercase text-sm">
+              {t('approach.label')}
+            </span>
+            <h2 class="font-headline font-black text-4xl md:text-5xl text-dark tracking-tighter leading-[1.1]">
+              {t('approach.heading')}
+            </h2>
+            <p class="text-on-surface-variant text-lg leading-relaxed">
+              {t('approach.description')}
+            </p>
+            <a
+              href={`/${lang}/contact/`}
+              class="inline-block plum-gradient text-white px-8 py-4 rounded-md font-bold hover:opacity-90 transition-opacity shadow-lg"
+            >
+              {t('approach.cta')}
+            </a>
           </div>
-          <div class="rounded-2xl overflow-hidden relative aspect-[4/3] md:aspect-auto">
-            <img src="/images/tours/gallery-2.jpg" alt="" loading="lazy" class="w-full h-full object-cover" />
-          </div>
-          <div class="rounded-2xl overflow-hidden relative aspect-[4/3] md:aspect-auto">
-            <img src="/images/tours/gallery-3.jpg" alt="" loading="lazy" class="w-full h-full object-cover" />
-          </div>
-          <div class="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[2/1] md:aspect-auto">
-            <img src="/images/tours/gallery-4.jpg" alt="" loading="lazy" class="w-full h-full object-cover" />
-          </div>
-        </div>
 
-        <div class="text-center">
-          <a href={`/${lang}/tours/`} class="honey-gradient text-white px-12 py-4 rounded-xl font-medium shadow-lg hover:scale-105 transition-transform inline-block">
-            {t('tours.explore')}
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Blog Teaser -->
-    <section class="py-24 bg-surface-container-low">
-      <div class="max-w-7xl mx-auto px-6 md:px-8">
-        <SectionHeading title={t('blog.heading')} subtitle={t('blog.subtitle')} />
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          {latestPosts.map((post) => (
-            <BlogCard post={post} lang={lang} />
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-24 bg-surface">
-      <div class="max-w-7xl mx-auto px-6 md:px-8">
-        <SectionHeading title={t('testimonials.heading')} />
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {testimonials.map((testimonial) => (
-            <TestimonialCard testimonial={testimonial} lang={lang} />
-          ))}
+          <!-- Right: 3 steps -->
+          <div class="lg:col-span-7 space-y-8">
+            {[
+              { num: '1', title: t('approach.step1_title'), desc: t('approach.step1_desc') },
+              { num: '2', title: t('approach.step2_title'), desc: t('approach.step2_desc') },
+              { num: '3', title: t('approach.step3_title'), desc: t('approach.step3_desc') },
+            ].map((step) => (
+              <div class="group flex items-start gap-6 bg-surface-container-lowest p-8 rounded-xl ghost-border hover:shadow-lg transition-shadow">
+                <div class="w-14 h-14 rounded-full border-2 border-primary/30 flex items-center justify-center text-primary font-headline font-black text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
+                  {step.num}
+                </div>
+                <div>
+                  <h3 class="font-headline font-bold text-lg text-dark mb-2">{step.title}</h3>
+                  <p class="text-on-surface-variant text-sm leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Newsletter -->
+    <!-- ========== NEWSLETTER ========== -->
     <NewsletterForm lang={lang} />
+
+    <!-- ========== BLOG PREVIEW ========== -->
+    {latestPosts.length > 0 && (
+      <section class="py-24 bg-surface-container-low">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+          <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span class="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-4 block">
+                {t('blog.label')}
+              </span>
+              <h2 class="font-headline font-black text-4xl md:text-5xl text-dark tracking-tighter">
+                {t('blog.heading')}
+              </h2>
+            </div>
+            <a
+              href={`/${lang}/blog/`}
+              class="text-primary font-medium flex items-center gap-2 group flex-shrink-0"
+            >
+              {t('blog.view_all')}
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {latestPosts.map((post) => (
+              <BlogCard post={post} lang={lang} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- ========== CTA BANNER ========== -->
+    <section class="py-24 bg-surface">
+      <div class="max-w-5xl mx-auto px-6 md:px-8">
+        <div class="plum-gradient rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+          <!-- Decorative blobs -->
+          <div class="absolute top-[-20%] right-[-10%] w-[50%] h-[80%] bg-white/5 rounded-full blur-3xl" aria-hidden="true"></div>
+          <div class="absolute bottom-[-30%] left-[-5%] w-[40%] h-[60%] bg-white/5 rounded-full blur-3xl" aria-hidden="true"></div>
+
+          <div class="relative z-10">
+            <h2 class="font-headline font-black text-3xl md:text-5xl text-white tracking-tighter mb-6">
+              {t('cta_banner.heading')}
+            </h2>
+            <p class="text-white/70 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+              {t('cta_banner.subtitle')}
+            </p>
+            <a
+              href={`/${lang}/contact/`}
+              class="inline-block bg-white text-primary px-10 py-4 rounded-md font-bold text-lg hover:bg-surface-container-low transition-colors shadow-lg"
+            >
+              {t('cta_banner.cta')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer lang={lang} />

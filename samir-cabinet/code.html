@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#8b1a6b",
+                    "surface-tint": "#a2307e",
+                    "on-tertiary-fixed": "#3d0025",
+                    "surface-dim": "#dbdad7",
+                    "primary-fixed": "#ffd8eb",
+                    "surface-variant": "#e4e2df",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#656464",
+                    "inverse-primary": "#ffaedc",
+                    "on-primary-fixed-variant": "#841265",
+                    "outline-variant": "#d9c0cb",
+                    "surface-container-highest": "#e4e2df",
+                    "on-background": "#1b1c1a",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#e4e2e1",
+                    "tertiary-fixed-dim": "#ffafd2",
+                    "on-tertiary-container": "#ffa0cc",
+                    "on-primary-fixed": "#3c002c",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#e4e2e1",
+                    "surface-container": "#efeeeb",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#54424b",
+                    "outline": "#86717b",
+                    "inverse-on-surface": "#f2f0ed",
+                    "secondary": "#5f5e5e",
+                    "primary-fixed-dim": "#ffaedc",
+                    "surface-container-high": "#eae8e5",
+                    "surface-container-low": "#f5f3f0",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "on-surface": "#1b1c1a",
+                    "tertiary": "#6c0045",
+                    "primary": "#6a0050",
+                    "on-secondary-fixed-variant": "#474747",
+                    "surface": "#fbf9f6",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#ff9fd7",
+                    "inverse-surface": "#30312f",
+                    "surface-bright": "#fbf9f6",
+                    "secondary-fixed-dim": "#c8c6c6",
+                    "tertiary-fixed": "#ffd8e7",
+                    "on-tertiary-fixed-variant": "#8b005b",
+                    "tertiary-container": "#950061",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "background": "#fbf9f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-plum-gradient {
+            background: linear-gradient(135deg, #6a0050 0%, #8b1a6b 100%);
+        }
+        .ghost-border {
+            outline: 1px solid rgba(134, 113, 123, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-primary">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-zinc-950/70 backdrop-blur-xl border-b border-stone-200/15 dark:border-stone-800/15 shadow-[0_24px_48px_-12px_rgba(139,26,107,0.08)]">
+<nav class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<div class="text-2xl font-black text-stone-900 dark:text-stone-50 tracking-tighter font-headline">STREICHER TRAD</div>
+<div class="hidden md:flex items-center space-gap-8 gap-x-8">
+<a class="text-[#8B1A6B] dark:text-[#C72386] border-b-2 border-[#8B1A6B] pb-1 font-headline font-bold tracking-tight" href="#">Accueil</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors font-headline font-bold tracking-tight" href="#">Nos Expertises</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors font-headline font-bold tracking-tight" href="#">Blog</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors font-headline font-bold tracking-tight" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 mr-2 font-headline font-bold text-sm tracking-tight">
+<span class="text-primary cursor-default select-none">FR</span>
+<span class="text-stone-300 dark:text-stone-700">|</span>
+<a class="text-stone-400 hover:text-stone-600 transition-colors" href="#">EN</a>
+</div>
+<div class="hidden lg:flex items-center gap-3 text-stone-600 mr-2">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+<span class="text-sm font-bold tracking-tight">01 23 45 67 89</span>
+</div>
+<button class="bg-[#8B1A6B] text-white px-6 py-2 rounded-md font-bold text-sm tracking-tight hover:opacity-90 active:scale-[0.98] transition-all">
+                    Prendre Rendez-vous
+                </button>
+</div>
+</nav>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex items-center overflow-hidden bg-plum-gradient text-white">
+<!-- Abstract background elements -->
+<div class="absolute inset-0 z-0">
+<div class="absolute top-[-10%] right-[-10%] w-[60%] h-[80%] bg-primary-fixed-dim/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-20%] left-[-5%] w-[40%] h-[60%] bg-tertiary-container/20 rounded-full blur-3xl"></div>
+<svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-10" viewbox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<path d="M0,1000 C300,800 400,200 1000,0 L1000,1000 Z" fill="currentColor"></path>
+</svg>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-8 w-full grid md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-7">
+<span class="inline-block label-md text-primary-fixed tracking-[0.2em] font-bold uppercase mb-6">Cabinet de Gestion Privée</span>
+<h1 class="text-5xl md:text-7xl font-black font-headline leading-[1.1] mb-8 tracking-tighter">
+                        Construisez votre avenir financier en toute sérénité
+                    </h1>
+<p class="text-xl text-primary-fixed/80 max-w-xl mb-12 font-medium leading-relaxed">
+                        Accompagnement sur-mesure en Prévoyance, Épargne, Retraite et Optimisation Patrimoniale pour particuliers et professionnels.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="bg-surface text-primary px-8 py-4 rounded-md font-bold text-lg hover:bg-surface-container-low transition-colors shadow-lg shadow-black/10">
+                            Prendre Rendez-vous
+                        </button>
+<button class="border-2 border-white/30 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-white/10 transition-colors backdrop-blur-sm">
+                            Découvrir nos expertises
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Bar -->
+<div class="bg-surface-container-low py-10 relative z-20">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-wrap justify-between items-center gap-8 md:gap-4 opacity-70">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+<span class="font-bold tracking-tight text-sm uppercase">ORIAS 20009220</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="map">map</span>
+<span class="font-bold tracking-tight text-sm uppercase">Partout en France</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="gavel">gavel</span>
+<span class="font-bold tracking-tight text-sm uppercase">Conseil indépendant</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
+<span class="font-bold tracking-tight text-sm uppercase">Sur rendez-vous</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Nos Expertises -->
+<section class="py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div class="max-w-2xl">
+<span class="label-md text-primary font-bold tracking-[0.1em] uppercase block mb-4">Domaines d'Intervention</span>
+<h2 class="text-4xl md:text-5xl font-black font-headline tracking-tighter text-on-surface">Une expertise holistique pour votre patrimoine</h2>
+</div>
+<div class="text-right">
+<a class="text-primary font-bold hover:underline underline-offset-8" href="#">Voir tous nos services</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl group hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 relative overflow-hidden">
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="security">security</span>
+</div>
+<h3 class="text-2xl font-black font-headline mb-4 tracking-tight">Prévoyance</h3>
+<p class="text-secondary leading-relaxed mb-6">Protégez vos proches et maintenez votre niveau de vie face aux aléas.</p>
+</div>
+<div class="absolute bottom-[-20px] right-[-20px] opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-primary text-[120px]" data-icon="security">security</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl group hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 relative overflow-hidden">
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="savings">savings</span>
+</div>
+<h3 class="text-2xl font-black font-headline mb-4 tracking-tight">Épargne</h3>
+<p class="text-secondary leading-relaxed mb-6">Optimisez le rendement de vos actifs selon votre profil de risque.</p>
+</div>
+<div class="absolute bottom-[-20px] right-[-20px] opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-primary text-[120px]" data-icon="savings">savings</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl group hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 relative overflow-hidden">
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="elderly">elderly</span>
+</div>
+<h3 class="text-2xl font-black font-headline mb-4 tracking-tight">Retraite</h3>
+<p class="text-secondary leading-relaxed mb-6">Anticipez la fin de votre carrière pour une sérénité maximale.</p>
+</div>
+<div class="absolute bottom-[-20px] right-[-20px] opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-primary text-[120px]" data-icon="elderly">elderly</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl group hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 relative overflow-hidden">
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="account_balance">account_balance</span>
+</div>
+<h3 class="text-2xl font-black font-headline mb-4 tracking-tight">Patrimoine</h3>
+<p class="text-secondary leading-relaxed mb-6">Stratégies sur-mesure pour la transmission et la fiscalité.</p>
+</div>
+<div class="absolute bottom-[-20px] right-[-20px] opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-primary text-[120px]" data-icon="account_balance">account_balance</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Notre Approche -->
+<section class="py-32 bg-surface-container-low overflow-hidden relative">
+<div class="absolute right-0 top-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2"></div>
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="grid lg:grid-cols-12 gap-20 items-center">
+<div class="lg:col-span-5">
+<span class="label-md text-primary font-bold tracking-[0.1em] uppercase block mb-4">Méthodologie</span>
+<h2 class="text-4xl md:text-5xl font-black font-headline tracking-tighter mb-8 text-on-surface">Une approche en trois temps</h2>
+<p class="text-lg text-secondary leading-relaxed mb-10">
+                            Parce que chaque situation est unique, nous avons développé une méthodologie rigoureuse garantissant l'adéquation parfaite de nos conseils avec vos objectifs de vie.
+                        </p>
+<button class="bg-[#8B1A6B] text-white px-8 py-4 rounded-md font-bold text-lg hover:opacity-90 transition-opacity">
+                            En savoir plus sur la méthode
+                        </button>
+</div>
+<div class="lg:col-span-7 space-y-12">
+<div class="flex gap-8 group">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-lowest flex items-center justify-center rounded-full font-headline font-black text-2xl text-primary ghost-border group-hover:bg-primary group-hover:text-white transition-all duration-500">1</div>
+<div>
+<h4 class="text-2xl font-bold font-headline mb-3 tracking-tight">Audit &amp; Bilan</h4>
+<p class="text-secondary leading-relaxed">Analyse exhaustive de votre situation actuelle, de vos engagements et de votre environnement fiscal.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-lowest flex items-center justify-center rounded-full font-headline font-black text-2xl text-primary ghost-border group-hover:bg-primary group-hover:text-white transition-all duration-500">2</div>
+<div>
+<h4 class="text-2xl font-bold font-headline mb-3 tracking-tight">Définition de la Stratégie</h4>
+<p class="text-secondary leading-relaxed">Conception d'une feuille de route personnalisée avec sélection rigoureuse des solutions les plus pertinentes.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-lowest flex items-center justify-center rounded-full font-headline font-black text-2xl text-primary ghost-border group-hover:bg-primary group-hover:text-white transition-all duration-500">3</div>
+<div>
+<h4 class="text-2xl font-bold font-headline mb-3 tracking-tight">Accompagnement &amp; Suivi</h4>
+<p class="text-secondary leading-relaxed">Mise en place des solutions et réévaluation régulière pour s'adapter à l'évolution du marché et de votre vie.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter -->
+<section class="py-24">
+<div class="max-w-5xl mx-auto px-8">
+<div class="bg-primary-fixed/30 rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-3xl md:text-4xl font-black font-headline tracking-tighter mb-6 text-primary">Restez informé de l'actualité patrimoniale</h2>
+<p class="text-secondary mb-10 max-w-xl mx-auto text-lg">Recevez chaque mois nos analyses exclusives sur les marchés et l'évolution de la fiscalité.</p>
+<form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+<input class="flex-1 bg-surface border-none border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-6 py-4 rounded-md" placeholder="votre@email.com" type="email"/>
+<button class="bg-primary text-white px-8 py-4 rounded-md font-bold hover:opacity-90 transition-opacity" type="submit">S'inscrire</button>
+</form>
+</div>
+<div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 100 100" width="100%">
+<circle cx="10" cy="10" fill="currentColor" r="50"></circle>
+<circle cx="90" cy="90" fill="currentColor" r="40"></circle>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- Blog Preview -->
+<section class="py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="label-md text-primary font-bold tracking-[0.1em] uppercase block mb-4">Le Blog</span>
+<h2 class="text-4xl font-black font-headline tracking-tighter text-on-surface">Dernières Analyses</h2>
+</div>
+<button class="text-primary font-bold hover:underline underline-offset-8">Toutes les publications</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<article class="group">
+<div class="aspect-video mb-8 bg-stone-200 rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-plum-gradient opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<img alt="" class="w-full h-full object-cover" data-alt="minimalist architectural building with clean lines and soft lighting against a clear sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcKoh0ekkBKSCL70_pN-nvtYnQ5ijJhqNyUJNLAlp2tBcDspzexQyaYk4Jyr7xtNHsou5QJERy4GsWCDUwZS1MRHQxEvhn9UvNJBat5TdEIuC5j2B3k983_njA8j_SWVL0anDSlu5ejy03NuWErRLf0aduSkGbU4sbiuMnt66Ze3F91Qe9UxGIOlMW9HCW85XTzW9zTy-GnVpFAi1OuRwMJ23roeph3J3gp-fKb3vSrfqRKx9C2V1saFlVuqrCzqI2bFPc5SmiJ4h9"/>
+<div class="absolute top-4 left-4">
+<span class="bg-white/90 backdrop-blur text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Patrimoine</span>
+</div>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4 group-hover:text-primary transition-colors">Réforme des retraites : Ce qui change pour vous en 2024</h3>
+<p class="text-secondary leading-relaxed mb-6">Analyse détaillée des nouveaux dispositifs et leur impact sur votre stratégie d'épargne.</p>
+<time class="text-stone-400 text-sm font-medium">12 Mars 2024</time>
+</article>
+<article class="group">
+<div class="aspect-video mb-8 bg-stone-200 rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-plum-gradient opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<img alt="" class="w-full h-full object-cover" data-alt="modern corporate skyscraper facade with reflective glass windows under a soft blue light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8SrrRGPY6iW4IZWYFZ6abQRK6M1qciBq0PhgLuunj_U9MC8Piz4tk5MFpm-FRyor4mYePRQPGyPqY6-O3-LEU0oVO3IaWdj4UQsCyUobFA6mwTo7uSCF0tAel1HA8fBGFAL_igknv-wHf2WgY_weqfnqJnWcHdLlNvWNif5z0WpB_Ae9hLZeP6mo_6ZS9P5uVewnnRkC_lLLDW614A57AqlkREj5KofjZIna5hapBG8oMoL6DD72AUVsZakB0II7mqVLszk_pP9uX"/>
+<div class="absolute top-4 left-4">
+<span class="bg-white/90 backdrop-blur text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Fiscalité</span>
+</div>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4 group-hover:text-primary transition-colors">Optimisation fiscale : Pourquoi l'assurance vie reste reine</h3>
+<p class="text-secondary leading-relaxed mb-6">Focus sur les avantages successoraux et la gestion des rachats partiels.</p>
+<time class="text-stone-400 text-sm font-medium">05 Mars 2024</time>
+</article>
+<article class="group">
+<div class="aspect-video mb-8 bg-stone-200 rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-plum-gradient opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<img alt="" class="w-full h-full object-cover" data-alt="elegant office interior with high quality furniture and abstract art on the walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8qBj5oHK5G8hnXb5ppdODJEl30_RCWxC0twpeGmbVNvduPiebGTdNhFh13R03YchF5JI-XH5P01mXPBqahBjdsm5mXz5mwZz5uxOPdN2QbpSreC2Ok6lqIyLorUFcxDyZS1j0NaM_OO0w_djdTlJkzxnwE_nsGvX9zSrQqlcJbn1zbpbFwpWAexYqy-g64RlKOieRUDNYT0dqQNZYkfXcAbFIA-iC3Dj9mZ4f0FMWUw44n12HC6rgIvVWRPh9DQoLj_Q1mFmB_gDX"/>
+<div class="absolute top-4 left-4">
+<span class="bg-white/90 backdrop-blur text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Prévoyance</span>
+</div>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4 group-hover:text-primary transition-colors">Protection du conjoint : Les outils indispensables</h3>
+<p class="text-secondary leading-relaxed mb-6">Comparer les régimes matrimoniaux et les contrats de prévoyance croisés.</p>
+<time class="text-stone-400 text-sm font-medium">28 Février 2024</time>
+</article>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="bg-plum-gradient rounded-3xl p-12 md:p-24 relative overflow-hidden text-white flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="max-w-2xl relative z-10 text-center md:text-left">
+<h2 class="text-4xl md:text-5xl font-black font-headline tracking-tighter mb-6">Prenez les bonnes décisions pour votre avenir</h2>
+<p class="text-xl text-primary-fixed/80 font-medium">Bénéficiez d'un premier audit gracieux de votre situation patrimoniale.</p>
+</div>
+<div class="relative z-10">
+<button class="bg-white text-primary px-10 py-5 rounded-md font-bold text-xl hover:bg-stone-100 transition-colors shadow-2xl shadow-black/20">
+                            Prendre Rendez-vous
+                        </button>
+</div>
+<!-- Decorative background curve -->
+<div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 100 100" width="100%">
+<path d="M0,0 Q50,100 100,0" fill="none" stroke="white" stroke-width="0.5"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-zinc-900 w-full pt-16 pb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto">
+<div class="md:col-span-1">
+<div class="text-xl font-black text-stone-900 dark:text-stone-50 font-headline mb-6">STREICHER TRAD</div>
+<p class="text-stone-500 dark:text-stone-400 font-inter text-sm leading-relaxed mb-6">
+                    Votre partenaire de confiance en gestion privée et conseil en investissements financiers.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 bg-stone-200 dark:bg-stone-800 rounded-full flex items-center justify-center text-[#8B1A6B] hover:bg-[#8B1A6B] hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-headline font-bold mb-6 text-stone-900 dark:text-stone-50">Expertises</h5>
+<ul class="space-y-4">
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] transition-colors text-sm font-inter" href="#">Prévoyance</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] transition-colors text-sm font-inter" href="#">Épargne &amp; Placements</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] transition-colors text-sm font-inter" href="#">Retraite</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] transition-colors text-sm font-inter" href="#">Optimisation Patrimoniale</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline font-bold mb-6 text-stone-900 dark:text-stone-50">Cabinet</h5>
+<ul class="space-y-4">
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] transition-colors text-sm font-inter" href="#">Notre Approche</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] transition-colors text-sm font-inter" href="#">L'Équipe</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] transition-colors text-sm font-inter" href="#">Mentions Légales</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] transition-colors text-sm font-inter" href="#">Politique de Confidentialité</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline font-bold mb-6 text-stone-900 dark:text-stone-50">Contact</h5>
+<ul class="space-y-4">
+<li class="flex gap-3 text-stone-500 dark:text-stone-400 text-sm font-inter">
+<span class="material-symbols-outlined text-[#8B1A6B] text-lg" data-icon="call">call</span>
+                        01 23 45 67 89
+                    </li>
+<li class="flex gap-3 text-stone-500 dark:text-stone-400 text-sm font-inter">
+<span class="material-symbols-outlined text-[#8B1A6B] text-lg" data-icon="mail">mail</span>
+                        contact@streicher-trad.fr
+                    </li>
+<li class="flex gap-3 text-stone-500 dark:text-stone-400 text-sm font-inter">
+<span class="material-symbols-outlined text-[#8B1A6B] text-lg" data-icon="location_on">location_on</span>
+                        75008 Paris, France
+                    </li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-20 pt-8 border-t border-stone-200 dark:border-stone-800 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-stone-500 dark:text-stone-400 font-inter text-sm leading-relaxed">© 2024 STREICHER TRAD. Conseiller en Investissements Financiers agréé.</p>
+<div class="flex gap-8">
+<a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] text-sm transition-colors" href="#">Newsletter</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-[#8B1A6B] text-sm transition-colors" href="#">Plan du site</a>
+</div>
+</div>
+</footer>
+</body></html>

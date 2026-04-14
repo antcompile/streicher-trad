@@ -20,7 +20,7 @@ function getPathInLang(targetLang: string): string {
 ---
 
 <nav aria-label="Language switcher" class="flex items-center gap-1 text-sm font-medium">
-  {Object.entries(languages).map(([code, config], i) => (
+  {Object.entries(languages).map(([code, _config], i) => (
     <>
       {i > 0 && <span class="text-outline-variant" aria-hidden="true">|</span>}
       <a
@@ -45,7 +45,7 @@ function getPathInLang(targetLang: string): string {
   document.querySelectorAll('[data-lang-switch]').forEach((link) => {
     link.addEventListener('click', () => {
       const lang = (link as HTMLElement).dataset.langSwitch;
-      if (lang) localStorage.setItem('danysbees-lang', lang);
+      if (lang) localStorage.setItem('streicher-lang', lang);
     });
   });
 </script>

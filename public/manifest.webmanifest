@@ -1,11 +1,11 @@
 {
-  "name": "Dany's Bees: Pure Honey from Lebanon",
-  "short_name": "Dany's Bees",
-  "description": "Pure honey from the mountains of Northern Lebanon. Family crafted in Barhalioun since the 1980s.",
-  "start_url": "/en/",
+  "name": "Streicher Trad — Prévoyance, Épargne, Retraite, Patrimoine",
+  "short_name": "Streicher Trad",
+  "description": "Cabinet de conseil indépendant en prévoyance, épargne, retraite et patrimoine — partout en France.",
+  "start_url": "/fr/",
   "display": "standalone",
-  "background_color": "#fff8f1",
-  "theme_color": "#D4941A",
+  "background_color": "#fbf9f6",
+  "theme_color": "#8B1A6B",
   "icons": [
     {
       "src": "/icons/icon-192.png",
@@ -18,6 +18,6 @@
       "type": "image/png"
     }
   ],
-  "lang": "en",
+  "lang": "fr",
   "dir": "ltr"
 }

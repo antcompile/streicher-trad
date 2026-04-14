@@ -1,10 +1,9 @@
 export const languages = {
-  en: { name: 'English', dir: 'ltr' as const },
-  ar: { name: 'العربية', dir: 'rtl' as const },
-  fr: { name: 'Français', dir: 'ltr' as const },
+  fr: { name: 'Français' },
+  en: { name: 'English' },
 } as const;
 
-export const defaultLang = 'en';
+export const defaultLang = 'fr';
 
 export type Lang = keyof typeof languages;
 

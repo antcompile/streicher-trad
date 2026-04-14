@@ -11,45 +11,43 @@ const { lang } = Astro.props;
 const t = useTranslation(lang);
 ---
 
-<section class="py-24 bg-surface overflow-hidden">
-  <div class="max-w-5xl mx-auto px-6 md:px-8">
-    <div class="bg-primary-container rounded-3xl p-10 md:p-20 relative overflow-hidden text-center shadow-2xl">
-      <!-- Decorative hexagon -->
-      <div class="absolute -end-20 -bottom-20 w-80 h-80 hexagon-mask bg-white/10" aria-hidden="true"></div>
+<section id="newsletter" class="py-24 bg-surface">
+  <div class="max-w-3xl mx-auto px-6 md:px-8">
+    <div class="bg-primary-fixed/30 rounded-3xl p-10 md:p-16 text-center">
+      <h2 class="text-primary font-headline font-black text-3xl md:text-4xl tracking-tighter mb-4">
+        {t('newsletter.heading')}
+      </h2>
+      <p class="text-secondary text-base mb-10 max-w-xl mx-auto font-body leading-relaxed">
+        {t('newsletter.subtitle')}
+      </p>
 
-      <div class="relative z-10">
-        <h2 class="font-serif text-3xl md:text-5xl text-white mb-6">
-          {t('newsletter.heading')}
-        </h2>
-        <p class="text-white/80 text-lg mb-10 max-w-xl mx-auto">
-          {t('newsletter.subtitle')}
-        </p>
-
-        <form
-          action={siteConfig.formspreeNewsletter}
-          method="POST"
-          class="flex flex-col md:flex-row gap-4 max-w-md mx-auto"
-          id="newsletter-form"
+      <form
+        action={siteConfig.formspreeNewsletter}
+        method="POST"
+        class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+        id="newsletter-form"
+      >
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder={t('newsletter.placeholder')}
+          class="flex-1 px-5 py-3.5 rounded-xl bg-surface-container-lowest text-dark placeholder:text-muted focus:ring-2 focus:ring-primary focus:outline-none font-body text-sm"
+        />
+        <button
+          type="submit"
+          class="bg-primary text-white px-8 py-3.5 rounded-xl font-bold hover:opacity-90 transition-opacity text-sm font-body whitespace-nowrap"
         >
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder={t('newsletter.placeholder')}
-            class="flex-1 px-6 py-4 rounded-xl border-none focus:ring-2 focus:ring-primary shadow-inner text-dark"
-            dir="ltr"
-          />
-          <button
-            type="submit"
-            class="bg-inverse-surface text-white px-8 py-4 rounded-xl font-bold hover:bg-dark transition-colors"
-          >
-            {t('newsletter.button')}
-          </button>
-        </form>
+          {t('newsletter.cta')}
+        </button>
+      </form>
 
-        <div id="newsletter-success" class="hidden mt-4 text-white font-medium">
-          {t('booking.success')}
-        </div>
+      <p class="text-muted text-xs mt-4 font-body">
+        {t('newsletter.privacy')}
+      </p>
+
+      <div id="newsletter-success" class="hidden mt-4 text-primary font-medium font-body">
+        {t('newsletter.success')}
       </div>
     </div>
   </div>

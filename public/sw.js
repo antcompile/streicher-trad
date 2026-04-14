@@ -1,7 +1,7 @@
-const CACHE_NAME = 'danysbees-v1';
+const CACHE_NAME = 'streicher-v1';
 const STATIC_ASSETS = [
   '/',
-  '/en/',
+  '/fr/',
   '/manifest.webmanifest',
   '/favicon.svg',
 ];

@@ -9,27 +9,26 @@ interface Props {
   image?: string;
   lang: Lang;
   slug: string;
-  type?: 'website' | 'article' | 'product';
+  type?: 'website' | 'article';
   jsonLd?: Record<string, any>;
 }
 
 const {
   title,
   description,
-  image = '/images/hero/mountains.jpg',
+  image,
   lang,
   slug,
   type = 'website',
   jsonLd,
 } = Astro.props;
 
-const fullTitle = `${title} | Dany's Bees`;
+const fullTitle = `${title} | Streicher Trad`;
 const canonicalUrl = `${siteConfig.url}/${lang}/${slug}`.replace(/\/+$/, '/');
-const imageUrl = image.startsWith('http') ? image : `${siteConfig.url}${image}`;
+const imageUrl = image ? (image.startsWith('http') ? image : `${siteConfig.url}${image}`) : undefined;
 
 const localeMap: Record<string, string> = {
   en: 'en_US',
-  ar: 'ar_LB',
   fr: 'fr_FR',
 };
 ---
@@ -41,11 +40,11 @@ const localeMap: Record<string, string> = {
 <!-- Open Graph -->
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={imageUrl} />
+{imageUrl && <meta property="og:image" content={imageUrl} />}
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />
-<meta property="og:locale" content={localeMap[lang] || 'en_US'} />
-<meta property="og:site_name" content="Dany's Bees" />
+<meta property="og:locale" content={localeMap[lang] || 'fr_FR'} />
+<meta property="og:site_name" content="Streicher Trad" />
 
 <!-- hreflang alternates -->
 {supportedLangs.map((l) => (
@@ -55,7 +54,7 @@ const localeMap: Record<string, string> = {
     href={`${siteConfig.url}/${l}/${slug}`.replace(/\/+$/, '/')}
   />
 ))}
-<link rel="alternate" hreflang="x-default" href={`${siteConfig.url}/en/${slug}`.replace(/\/+$/, '/')} />
+<link rel="alternate" hreflang="x-default" href={`${siteConfig.url}/fr/${slug}`.replace(/\/+$/, '/')} />
 
 <!-- JSON-LD -->
 {jsonLd && (

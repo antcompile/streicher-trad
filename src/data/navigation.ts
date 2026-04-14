@@ -7,9 +7,7 @@ export interface NavItem {
 
 export const mainNav: NavItem[] = [
   { key: 'nav.home', href: (lang) => `/${lang}/` },
-  { key: 'nav.products', href: (lang) => `/${lang}/products/` },
-  { key: 'nav.tours', href: (lang) => `/${lang}/tours/` },
-  { key: 'nav.about', href: (lang) => `/${lang}/about/` },
+  { key: 'nav.expertises', href: (lang) => `/${lang}/#expertises` },
   { key: 'nav.blog', href: (lang) => `/${lang}/blog/` },
   { key: 'nav.contact', href: (lang) => `/${lang}/contact/` },
 ];
