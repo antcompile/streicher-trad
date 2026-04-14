@@ -54,25 +54,27 @@ const categories = [
         </h1>
       </div>
 
-      <!-- Category filter pills (decorative) -->
-      <div class="flex flex-wrap gap-3 mb-16">
+      <!-- Category filter pills -->
+      <div class="flex flex-wrap gap-3 mb-16" id="blog-filters">
         {categories.map((cat, i) => (
-          <span
+          <button
+            type="button"
+            data-filter={cat.key}
             class:list={[
-              'px-5 py-2 rounded-full text-sm font-medium transition-colors cursor-default',
+              'px-5 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer',
               i === 0
                 ? 'bg-primary text-white'
                 : 'bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high',
             ]}
           >
             {cat.label}
-          </span>
+          </button>
         ))}
       </div>
 
       <!-- Posts grid -->
       {posts.length > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="blog-grid">
           {posts.map((post) => (
             <BlogCard post={post} lang={lang} />
           ))}
@@ -85,3 +87,36 @@ const categories = [
 
   <Footer lang={lang} />
 </BaseLayout>
+
+<script>
+  const filters = document.getElementById('blog-filters');
+  const grid = document.getElementById('blog-grid');
+
+  if (filters && grid) {
+    const buttons = filters.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const cards = grid.querySelectorAll<HTMLElement>('[data-category]');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        // Update active button styles
+        buttons.forEach((b) => {
+          b.classList.remove('bg-primary', 'text-white');
+          b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        });
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        btn.classList.add('bg-primary', 'text-white');
+
+        // Filter cards
+        cards.forEach((card) => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+</script>

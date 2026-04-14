@@ -39,18 +39,42 @@ const categoryLabels: Record<string, string> = {
 const categoryLabel = categoryLabels[post.data.category] || post.data.category;
 
 const readTime = 5;
+
+const href = `/${lang}/blog/${slug}/`;
+
+// Stock image URLs per category (Unsplash free-to-use images)
+const categoryImages: Record<string, string> = {
+  prevoyance: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=640&h=360&fit=crop&q=80',
+  epargne: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=640&h=360&fit=crop&q=80',
+  retraite: 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=640&h=360&fit=crop&q=80',
+  patrimoine: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=640&h=360&fit=crop&q=80',
+  fiscalite: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=640&h=360&fit=crop&q=80',
+};
+
+const imageUrl = categoryImages[post.data.category];
 ---
 
-<article class="group bg-surface-container-lowest rounded-2xl overflow-hidden ghost-border transition-shadow hover:shadow-lg">
-  <!-- Plum gradient header as placeholder (no photos) -->
-  <a href={`/${lang}/blog/${slug}/`} class="block">
-    <div class="aspect-[16/9] plum-gradient relative flex items-end p-6">
-      <!-- Category pill -->
-      <span class="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">
-        {categoryLabel}
-      </span>
-    </div>
-  </a>
+<article class="group bg-surface-container-lowest rounded-2xl overflow-hidden ghost-border transition-shadow hover:shadow-lg relative" data-category={post.data.category}>
+  <a href={href} class="absolute inset-0 z-10" aria-label={title}></a>
+
+  <!-- Image header -->
+  <div class="aspect-[16/9] relative overflow-hidden">
+    {imageUrl ? (
+      <img
+        src={imageUrl}
+        alt=""
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
+      />
+    ) : (
+      <div class="w-full h-full plum-gradient"></div>
+    )}
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+    <!-- Category pill -->
+    <span class="absolute bottom-4 left-4 inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">
+      {categoryLabel}
+    </span>
+  </div>
 
   <div class="p-6">
     <!-- Date + Read time -->
@@ -61,10 +85,8 @@ const readTime = 5;
     </div>
 
     <!-- Title -->
-    <h3 class="font-headline font-black text-lg md:text-xl text-dark mb-3 leading-snug tracking-tight">
-      <a href={`/${lang}/blog/${slug}/`} class="hover:text-primary transition-colors">
-        {title}
-      </a>
+    <h3 class="font-headline font-black text-lg md:text-xl text-dark mb-3 leading-snug tracking-tight group-hover:text-primary transition-colors">
+      {title}
     </h3>
 
     <!-- Excerpt -->
@@ -72,15 +94,12 @@ const readTime = 5;
       {description}
     </p>
 
-    <!-- Read more link -->
-    <a
-      href={`/${lang}/blog/${slug}/`}
-      class="text-primary font-medium text-sm inline-flex items-center gap-1 group/link font-body"
-    >
+    <!-- Read more -->
+    <span class="text-primary font-medium text-sm inline-flex items-center gap-1 font-body">
       {t('blog.read_more')}
-      <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
       </svg>
-    </a>
+    </span>
   </div>
 </article>

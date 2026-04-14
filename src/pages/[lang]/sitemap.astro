@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SEO from '../../components/SEO.astro';
+import { supportedLangs, type Lang } from '../../i18n/languages';
+import { useTranslation, getLocalizedContent } from '../../i18n/utils';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return supportedLangs.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslation(lang);
+const currentPath = `/${lang}/sitemap/`;
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const sitemapHeading = lang === 'fr' ? 'Plan du site' : 'Sitemap';
+const pagesHeading = lang === 'fr' ? 'Pages principales' : 'Main Pages';
+const blogHeading = lang === 'fr' ? 'Articles du blog' : 'Blog Posts';
+---
+
+<BaseLayout lang={lang} title={`${sitemapHeading} | Streicher Trad`}>
+  <Fragment slot="head">
+    <SEO
+      title={sitemapHeading}
+      description={sitemapHeading}
+      lang={lang}
+      slug="sitemap/"
+    />
+  </Fragment>
+
+  <Header lang={lang} currentPath={currentPath} />
+
+  <main id="main-content" class="pt-32 pb-20">
+    <div class="max-w-3xl mx-auto px-6 md:px-8">
+      <h1 class="font-headline font-black text-4xl md:text-5xl text-dark tracking-tighter mb-12">
+        {sitemapHeading}
+      </h1>
+
+      <!-- Main pages -->
+      <section class="mb-12">
+        <h2 class="font-headline font-bold text-xl text-dark mb-4">{pagesHeading}</h2>
+        <ul class="space-y-3 font-body text-on-surface-variant">
+          <li>
+            <a href={`/${lang}/`} class="text-primary hover:underline">{t('nav.home')}</a>
+          </li>
+          <li>
+            <a href={`/${lang}/#expertises`} class="text-primary hover:underline">{t('nav.expertises')}</a>
+          </li>
+          <li>
+            <a href={`/${lang}/blog/`} class="text-primary hover:underline">{t('nav.blog')}</a>
+          </li>
+          <li>
+            <a href={`/${lang}/contact/`} class="text-primary hover:underline">{t('nav.contact')}</a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Blog posts -->
+      {posts.length > 0 && (
+        <section>
+          <h2 class="font-headline font-bold text-xl text-dark mb-4">{blogHeading}</h2>
+          <ul class="space-y-3 font-body text-on-surface-variant">
+            {posts.map((post) => (
+              <li class="flex items-baseline gap-3">
+                <time datetime={post.data.date} class="text-xs text-muted whitespace-nowrap">
+                  {new Date(post.data.date).toLocaleDateString(
+                    lang === 'fr' ? 'fr-FR' : 'en-US',
+                    { year: 'numeric', month: 'short', day: 'numeric' }
+                  )}
+                </time>
+                <a href={`/${lang}/blog/${post.id}/`} class="text-primary hover:underline">
+                  {getLocalizedContent(post.data.title, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</BaseLayout>

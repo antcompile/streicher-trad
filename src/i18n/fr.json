@@ -8,15 +8,15 @@
   "hero": {
     "label": "Cabinet de Gestion Privée",
     "title": "Construisez votre avenir financier en toute sérénité",
-    "subtitle": "Accompagnement sur-mesure en Prévoyance, Épargne, Retraite et Optimisation Patrimoniale pour particuliers et professionnels.",
-    "cta_primary": "Prendre Rendez-vous",
+    "subtitle": "Accompagnement sur mesure en Prévoyance, Épargne, Retraite et Optimisation Patrimoniale pour particuliers et professionnels.",
+    "cta_primary": "Prendre Rendez vous",
     "cta_secondary": "Découvrir nos expertises"
   },
   "trust": {
     "orias": "ORIAS 20009220",
     "france": "Partout en France",
     "independent": "Conseil indépendant",
-    "appointment": "Sur rendez-vous"
+    "appointment": "Sur rendez vous"
   },
   "expertises": {
     "label": "Domaines d'Intervention",
@@ -29,7 +29,7 @@
     "retraite_title": "Retraite",
     "retraite_desc": "Anticipez la fin de votre carrière pour une sérénité maximale.",
     "patrimoine_title": "Patrimoine",
-    "patrimoine_desc": "Stratégies sur-mesure pour la transmission et la fiscalité."
+    "patrimoine_desc": "Stratégies sur mesure pour la transmission et la fiscalité."
   },
   "approach": {
     "label": "Méthodologie",
@@ -64,11 +64,11 @@
   "cta_banner": {
     "heading": "Prenez les bonnes décisions pour votre avenir",
     "subtitle": "Bénéficiez d'un premier audit gracieux de votre situation patrimoniale.",
-    "cta": "Prendre Rendez-vous"
+    "cta": "Prendre Rendez vous"
   },
   "contact": {
-    "heading": "Contactez-nous",
-    "subtitle": "Prenez rendez-vous pour un premier audit gratuit et sans engagement.",
+    "heading": "Contactez nous",
+    "subtitle": "Prenez rendez vous pour un premier audit gratuit et sans engagement.",
     "name": "Nom complet",
     "email": "Email",
     "phone": "Téléphone",
